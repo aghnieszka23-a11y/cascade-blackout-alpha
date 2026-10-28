@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09111d">
+<title>CASCADE — Blackout Winter | Public Alpha</title>
+<meta property="og:title" content="CASCADE — Blackout Winter">
+<meta property="og:description" content="One decision. A thousand consequences. Play a strategy game about global chain reactions.">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="Play CASCADE, an original strategy game about cascading crises, cooperation, and difficult decisions. Progress saves locally on your device.">
+<meta name="color-scheme" content="dark">
+<style>
+:root{--bg:#080f1b;--panel:#101d2d;--panel2:#142438;--line:#26394c;--text:#ecf5fa;--muted:#92a6b8;--accent:#78e2cf;--gold:#eac17c;--red:#ff7785;--blue:#69c9e7;--green:#95dbac;--purple:#c8a5ed;--radius:17px;color-scheme:dark}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;color:var(--text);background:radial-gradient(ellipse 1100px 650px at 50% -210px,#18344c 0,transparent 75%),#08111c;line-height:1.5}
+button,select{font:inherit}button{cursor:pointer;color:inherit}button:disabled{opacity:.34;cursor:not-allowed}button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.shell{max-width:1540px;padding:0 26px 42px;margin:auto}header{height:87px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #243747;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:13px}.symbol{width:39px;height:39px;border:2px solid var(--accent);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 21px #73e6d329}.symbol span{width:17px;height:17px;border:3px solid var(--gold);transform:rotate(45deg);border-radius:4px}.brand-name{font-size:22px;letter-spacing:4px;font-weight:800;line-height:1}.brand-sub{font-size:10px;color:var(--muted);letter-spacing:2.1px;margin-top:7px}.top-stats{display:flex;align-items:center;gap:11px;flex-wrap:wrap}.top-pill{background:#142435;border:1px solid #304358;border-radius:11px;padding:8px 14px;min-width:91px}.top-pill small{display:block;text-transform:uppercase;letter-spacing:1.3px;font-size:9px;color:var(--muted)}.top-pill strong{font-size:15px;display:block}.top-pill.special strong{color:var(--accent)}.ghost{border:1px solid #395064;border-radius:11px;background:#132236;padding:9px 14px;font-weight:700;font-size:12px}.ghost:hover{border-color:var(--accent);background:#1b3448}.layout{display:grid;grid-template-columns:minmax(0,1fr) 355px;gap:20px;margin-top:22px}.left{display:grid;gap:17px;min-width:0;align-content:start}.panel{background:linear-gradient(160deg,#101e2f,#0f1b2a 75%);border:1px solid #294154;border-radius:var(--radius);box-shadow:0 12px 40px #0002;overflow:hidden}.panel-head{padding:19px 22px 0;display:flex;gap:18px;align-items:flex-start;justify-content:space-between}.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:2.2px;font-size:10px;font-weight:800}.heading{font-size:19px;font-weight:750;letter-spacing:.1px;margin:5px 0 0}.subheading{font-size:12px;color:var(--muted);margin:5px 0}.map-controls{display:flex;align-items:center;gap:10px}.map-key{display:flex;align-items:center;gap:11px;font-size:10px;color:var(--muted)}.map-key span:before{content:"";display:inline-block;vertical-align:middle;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:5px}.map-key span:last-child:before{background:var(--red)}.map-wrap{position:relative;padding:0 14px 0;isolation:isolate}.map-wrap::before{content:"";position:absolute;inset:30px 22px 35px;background:radial-gradient(ellipse at 50% 45%,#28476240,transparent 72%);pointer-events:none}.worldmap{display:block;width:100%;max-height:485px;min-height:290px}.terrain{fill:#203750;stroke:#42617b;stroke-opacity:.45;stroke-width:2}.terrain2{fill:#1b3246;stroke:#405e73;stroke-width:2;stroke-opacity:.4}.gridlines{stroke:#294058;stroke-width:1;opacity:.45}.sea-lines{fill:none;stroke:#2e5260;stroke-width:1;opacity:.45}.link{fill:none;stroke-linecap:round;stroke-width:2;opacity:.6}.link.degraded{stroke-dasharray:5 8}.link.hot{stroke-dasharray:3 8;animation:dash 9s linear infinite}@keyframes dash{to{stroke-dashoffset:-110}}.node{cursor:pointer;outline:0}.node .outer{fill:#0d1c2c;stroke-width:2.5}.node .inner{fill:#c0e9ed}.node .halo{opacity:.1;fill:#77d9c8}.node.active .halo{opacity:.27}.node.active .outer{stroke-width:4}.node-label{fill:#d8e9f4;font-size:15px;paint-order:stroke;stroke:#101c29;stroke-width:4px;stroke-linejoin:round;pointer-events:none;font-weight:700}.node-index{fill:#8aa6b5;font-size:9px;pointer-events:none}.map-bottom{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 23px 21px;color:var(--muted);font-size:11px;flex-wrap:wrap}.legend{display:flex;gap:15px}.legend b{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.section-title{font-size:14px;font-weight:780;letter-spacing:.2px}.detail-box{display:grid;grid-template-columns:230px 1fr;gap:16px;padding:16px 20px 22px}.detail-left{border-right:1px solid var(--line);padding-right:15px}.detail-left h2{margin:5px 0 0;font-size:19px;letter-spacing:.3px}.detail-left .small{font-size:12px;color:var(--muted)}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.tag{background:#203248;border:1px solid #3b5060;padding:3px 8px;font-size:10px;color:#d1e1e9;border-radius:20px}.detail-right{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;align-content:center}.metric{min-width:0}.metric-header{display:flex;align-items:baseline;gap:5px;justify-content:space-between;font-size:11px;color:var(--muted)}.metric-header strong{font-size:16px;color:var(--text)}.track{width:100%;height:7px;border-radius:5px;background:#2a3848;overflow:hidden;margin-top:10px}.fill{height:100%;border-radius:5px;transition:width .3s ease}.timeline-panel{padding:18px 20px 21px}.timeline-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.score{color:var(--accent);font-weight:800}.spark{display:block;width:100%;height:98px;margin:12px 0 0;border-radius:10px;background:#0a1726;overflow:visible}.timeline-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}.timeline-controls label{font-size:12px;color:var(--muted)}.timeline-controls select{background:#172a3d;border:1px solid #395065;color:var(--text);padding:8px;border-radius:9px;min-width:110px}.smallprint{font-size:11px;color:var(--muted);margin-top:10px}.aside{display:grid;gap:17px;align-content:start}.aside .panel{padding:19px 17px}.objective{background:#182a3b;padding:14px;border-radius:12px;border:1px solid #385366;margin-top:12px}.objective .label{color:var(--muted);text-transform:uppercase;font-size:10px;font-weight:750;letter-spacing:1.5px}.objective .value{font-size:15px;font-weight:730;margin:5px 0}.objective p{font-size:11px;color:#bdcedb;margin:4px 0}.objective-steps{display:grid;gap:9px;margin-top:12px}.goal-row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px}.goal-row span:last-child{font-weight:800;font-variant-numeric:tabular-nums}.goal-row.good span:last-child{color:var(--accent)}.goal-row.warn span:last-child{color:var(--gold)}.tab-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:17px 0 13px;background:#0b1827;border-radius:11px;padding:5px}.tab{background:transparent;border:0;border-radius:8px;padding:9px 4px;color:var(--muted);font-size:11px;font-weight:750}.tab.active{color:#0a1b25;background:var(--accent)}.action-list{display:grid;gap:8px}.action-item{width:100%;text-align:left;padding:12px;border-radius:11px;border:1px solid #334b5c;background:#152738;transition:background .15s,border-color .15s}.action-item:hover{background:#1d3348;border-color:#698698}.action-item.selected{border-color:var(--accent);background:#173a43}.action-item .action-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:740;font-size:12px}.action-item .description{font-size:11px;color:#a5bac7;margin-top:4px;line-height:1.4}.cost{color:var(--gold);font-size:11px;white-space:nowrap}.preview{margin-top:14px;border-top:1px solid #314355;padding-top:12px}.preview-head{display:flex;gap:6px;align-items:center;justify-content:space-between}.preview-title{font-size:13px;font-weight:750}.impact{display:flex;flex-wrap:wrap;gap:5px;margin:10px 0}.impact span{font-size:10px;background:#1a3143;border:1px solid #385163;padding:4px 7px;border-radius:6px}.plus{color:var(--green)}.minus{color:var(--red)}.execute{width:100%;padding:13px 10px;border:0;background:var(--accent);color:#08252c;border-radius:10px;font-size:12px;font-weight:850;letter-spacing:.2px;margin-top:10px}.execute:hover:not(:disabled){background:#a5fff0}.advance{width:100%;padding:15px 12px;margin-top:11px;border:1px solid #9bb9c055;background:#253b50;color:#e7f6fa;border-radius:11px;font-size:12px;font-weight:810;display:flex;align-items:center;justify-content:space-between}.advance:hover{background:#324c60}.hint{font-size:10px;color:var(--muted);margin-top:10px}.feed{padding:17px 21px 20px}.feed-top{display:flex;align-items:center;justify-content:space-between;gap:15px}.feed-items{display:grid;gap:8px;margin-top:13px;max-height:270px;overflow:auto;scrollbar-color:#2f5360 transparent}.feed-item{border-left:2px solid #597d94;padding:6px 9px;font-size:11px;line-height:1.45;color:#c5d7df;background:#14253870}.feed-item strong{display:block;font-size:10px;color:#90a7b9;font-weight:750;letter-spacing:.2px}.feed-item.crisis{border-color:var(--red)}.feed-item.success{border-color:var(--accent)}.feed-item.action{border-color:var(--gold)}.footer{text-align:center;color:#718b9e;font-size:11px;padding:21px 10px}.modal-backdrop{position:fixed;inset:0;background:#030914dd;backdrop-filter:blur(9px);z-index:10;display:grid;place-items:center;padding:22px;overflow-y:auto}.modal{background:linear-gradient(145deg,#182f42,#0e1d2e);border:1px solid #426279;border-radius:22px;padding:29px;box-shadow:0 30px 90px #000b;max-width:710px;width:100%}.modal h1{font-size:35px;letter-spacing:-1px;margin:7px 0 10px;line-height:1.2}.modal p{font-size:14px;color:#b0c5d2;line-height:1.7}.mandate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:21px 0}.mandate-card{text-align:left;border:1px solid #426077;background:#182b3b;border-radius:13px;padding:14px 12px;min-height:122px}.mandate-card strong{display:block;font-size:14px;margin-bottom:6px}.mandate-card small{font-size:11px;line-height:1.4;display:block;color:#aabeca}.mandate-card.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:#1a3a41}.primary{background:var(--accent);color:#06242a;padding:13px 22px;font-weight:830;font-size:13px;border:0;border-radius:10px}.primary:hover{background:#a1fce9}.modal-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:17px}.label-sm{font-size:11px;color:var(--muted)}.mode-result{font-size:22px;font-weight:790;margin:8px 0}.modal-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0}.modal-stat div{padding:12px;background:#12283a;border-radius:10px}.modal-stat b{display:block;font-size:19px}.modal-stat small{color:var(--muted);font-size:10px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 320px}.detail-box{grid-template-columns:190px 1fr}.node-label{font-size:13px}}@media(max-width:860px){header{height:auto;padding:17px 0}.layout{grid-template-columns:1fr}.aside{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.aside> .panel:last-child{grid-column:span 2}.worldmap{max-height:390px}.detail-box{grid-template-columns:210px 1fr}}@media(max-width:620px){.shell{padding:0 11px 30px}.brand-name{font-size:19px}.top-stats{gap:7px}.top-pill{min-width:65px;padding:6px 9px}.top-pill strong{font-size:13px}.top-pill small{font-size:8px}.layout{margin-top:11px;gap:11px}.panel-head{padding:15px 15px 0}.map-wrap{padding:0}.worldmap{min-height:235px}.node-label{font-size:18px}.map-bottom{padding:8px 15px 15px}.detail-box{grid-template-columns:1fr;gap:10px;padding:16px}.detail-left{border-right:0;border-bottom:1px solid var(--line);padding:0 0 9px}.detail-right{gap:8px}.aside{grid-template-columns:1fr;gap:11px}.aside>.panel:last-child{grid-column:span 1}.modal{padding:22px 15px}.modal h1{font-size:27px}.mandate-grid{grid-template-columns:1fr;gap:7px;margin:12px 0}.mandate-card{min-height:auto;padding:11px}.mandate-card strong{margin:0 0 2px}.modal-stat{grid-template-columns:repeat(3,1fr)}.timeline-panel{padding:15px}.footer{font-size:10px}}
+
+/* Touch-first layout. The primary controls remain usable without precise SVG tapping. */
+.quick-pickers{display:none}
+.mobile-action-desc{display:none}
+@media(max-width:620px), (max-width:900px) and (max-height:480px){
+  .layout{display:flex;flex-direction:column;gap:11px}
+  .left,.aside{display:contents}
+  .aside>.panel:first-child{order:1}
+  .aside>.panel:nth-child(2){order:2}
+  .left>.panel:first-child{order:3}
+  .left>.panel:nth-child(2){order:4}
+  .left>.panel:nth-child(3){order:5}
+  .left>.panel:nth-child(4){order:6}
+  .quick-pickers{display:grid;grid-template-columns:1fr;gap:5px;margin:14px 0 10px}
+  .quick-pickers label{font-size:12px;font-weight:750;color:#bfd6e4;margin-top:3px}
+  .quick-pickers select{width:100%;min-height:47px;background:#1a3445;border:1px solid #688597;color:var(--text);border-radius:10px;padding:10px 12px;font-size:16px}
+  .tab-strip{margin:13px 0 12px}
+  .tab{min-height:46px;font-size:12px}
+  .action-list{display:none}
+  .mobile-action-desc{display:block;font-size:12px;color:#b8ced9;line-height:1.55;margin:7px 0 0}
+  .aside .panel{padding:17px 15px}
+  .preview{margin-top:9px}
+  .execute,.advance{min-height:52px;font-size:14px}
+  .ghost{min-height:44px;font-size:12px}
+  .timeline-controls select{min-height:44px}
+  .modal-backdrop{place-items:start center;align-items:start;padding:16px 12px;overscroll-behavior:contain}
+  .modal{max-width:100%;margin:0 auto}
+  .modal-tools{gap:10px;flex-wrap:wrap}
+  .primary{min-height:48px}
+  .node-label{font-size:19px}
+}
+@media(max-width:360px){.top-stats{gap:5px}.top-pill{min-width:61px;padding:6px 7px}.modal h1{font-size:25px}}
+
+/* v0.4: inspectable physical flows and meaningful mobile diagnostics */
+.flow-intel{padding:0 20px 18px;border-top:1px solid #284257}
+.flow-intel .flow-title{font-size:11px;font-weight:750;letter-spacing:1.3px;text-transform:uppercase;color:var(--accent);padding-top:14px}
+.flow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:10px}
+.flow-cell{background:#162b3b;border:1px solid #2e4c5b;border-radius:10px;padding:10px 12px;min-width:0}
+.flow-cell .flow-label{color:#9bb4c1;font-size:10px}.flow-cell strong{font-size:15px;display:block;font-variant-numeric:tabular-nums}
+.flow-cell small{font-size:10px;color:#abc3cf;line-height:1.2}.flow-note{font-size:11px;color:#c5d6dc;margin-top:9px;line-height:1.5}
+.flow-intel .legend-mini{font-size:10px;color:#90a7b8;margin-top:5px}
+.world-flow{background:#132939;border:1px solid #365262;border-radius:11px;padding:11px 13px;margin-top:13px;display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.world-flow strong{font-size:14px;color:#d2eee9;display:block}.world-flow span{font-size:10px;color:#acc3ca}
+.action-item:disabled{opacity:.55}.action-warning{color:#ffd493;font-size:11px;font-weight:700;margin-top:6px}
+@media(max-width:620px){.flow-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.flow-intel{padding:0 15px 14px}}
+
+
+/* v0.6: Causality Lens, trace evidence, counterfactual comparison */
+.lens-panel{padding:17px 20px 20px}
+.lens-heading{display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap}
+.lens-switch{display:flex;gap:5px;background:#091826;border-radius:10px;padding:4px;border:1px solid #345064}
+.lens-switch button{border:0;background:transparent;border-radius:7px;padding:9px 12px;color:#adc3cf;font-size:12px;font-weight:750;min-height:40px}
+.lens-switch button.active{background:#32636b;color:#eafffa}
+.trace-intro{margin:12px 0 14px;font-size:12px;color:#b5cbd7}
+.trace-line{display:grid;grid-template-columns:26px minmax(0,1fr);gap:9px;padding:9px 0;border-bottom:1px solid #223747}
+.trace-line:last-child{border-bottom:0}
+.trace-step{border-radius:8px;background:#20394d;height:26px;width:26px;text-align:center;line-height:26px;color:#b8d7df;font-size:12px;font-weight:850}
+.trace-line.alert .trace-step{background:#54313b;color:#ffd6d4}
+.trace-line strong{display:block;font-size:12px}
+.trace-line p{font-size:11px;line-height:1.45;color:#b2c7d4;margin:3px 0 0}
+.provenance-button{color:#88e6d7;background:transparent;border:0;text-decoration:underline;text-underline-offset:3px;padding:2px 1px;font-size:11px}
+.forecast{margin-top:12px;border:1px solid #3a5b65;background:#122b3a;border-radius:12px;padding:12px}
+.forecast-title{font-size:12px;font-weight:850;color:#baf6eb;margin:0 0 5px}
+.forecast-intro{font-size:11px;line-height:1.5;color:#bbd1dd;margin:0 0 11px}
+.forecast-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.forecast-col{background:#0a1e2e;border:1px solid #365161;border-radius:9px;padding:10px}
+.forecast-col header{height:auto;border:0;padding:0;margin:0 0 7px;display:block;font-size:10px;letter-spacing:.6px;text-transform:uppercase;color:#87d6d6;font-weight:780}
+.forecast-row{display:flex;justify-content:space-between;align-items:baseline;gap:7px;font-size:11px;color:#b8cad5;padding:4px 0;border-bottom:1px solid #263c4a}
+.forecast-row:last-child{border:0}
+.forecast-row b{font-variant-numeric:tabular-nums;font-size:12px;color:#edf9fa}
+.forecast-row b.good{color:#99ebbb}.forecast-row b.bad{color:#ff9e9e}
+.spillovers{font-size:11px;line-height:1.55;margin-top:10px;color:#c3d7df}
+.forecast-note{font-size:10px;line-height:1.45;color:#8ea9b6;margin-top:10px}
+.link.inspected{stroke:#a3f9d6;stroke-width:4;opacity:.95}
+@media(max-width:620px),(max-width:900px) and (max-height:480px){
+ .lens-panel{order:3;padding:14px}
+ .left>.panel:first-child{order:4}
+ .left>.panel:nth-child(2){order:5}
+ .left>.panel:nth-child(4){order:6}
+ .left>.panel:nth-child(5){order:7}
+ .forecast{padding:11px}.forecast-compare{gap:6px}.forecast-col{padding:8px}
+}
+@media(max-width:360px){.lens-switch button{padding:8px 9px}.forecast-row{font-size:10px}.forecast-row b{font-size:11px}}
+/* The forecast treats uncertainty ranges as secondary to its central estimates. */
+.forecast-values {display:inline-flex; flex-direction:column; align-items:flex-end; gap:2px; text-align:right;}
+.uncertainty-range {font-size:10px;line-height:1.3;font-weight:500;color:#90a9bc;white-space:nowrap;}
+.forecast-row {gap:8px;}
+/* v0.7: surface opportunity cost and regional relationships */
+.trade-alert{border-left:3px solid var(--gold);background:#283044;border-radius:8px;padding:10px 12px;font-size:11px;line-height:1.55;margin-top:10px;color:#e5d6b7}
+.trade-alert strong{color:#f3d6a3}
+@media(max-width:720px){.trade-alert{font-size:12px}.action-warning{font-weight:750}}
+
+/* v0.8: player-first guide, live evidence, and decision debrief */
+.coach{margin:0 0 16px;border:1px solid #559790;background:linear-gradient(100deg,#143c40,#15283e);border-radius:15px;padding:14px 17px;box-shadow:0 10px 34px #0003;display:none;position:relative}
+.coach.visible{display:block}.coach-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.coach-top strong{font-size:13px;color:#9ff3de;letter-spacing:.7px}.coach p{font-size:13px;line-height:1.5;margin:7px 0 11px;color:#deeff4}
+.coach-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.coach button,.pulse button,.debrief button{border:1px solid #658b9f;border-radius:9px;background:#1e3d4e;min-height:40px;padding:8px 12px;font-size:12px;font-weight:750}
+.coach .coach-skip{background:transparent;color:#bed4e1}.coach .coach-progress{font-size:11px;color:#acd8ce}
+.tour-spotlight{outline:3px solid #75e5cc!important;outline-offset:3px;box-shadow:0 0 0 6px #54e4ce26!important}
+.pulse{border:1px solid #325368;border-radius:14px;background:linear-gradient(125deg,#102b3a,#162738);padding:14px 18px;margin-bottom:14px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto;gap:15px;align-items:center}
+.pulse .eyebrow{color:#95dbc9}.pulse-title{font-size:17px;font-weight:850;letter-spacing:-.3px}.pulse-detail{font-size:12px;color:#bdd2de;line-height:1.45;margin-top:4px}.pulse-proof{border-left:1px solid #3b5b68;padding-left:15px;font-size:12px;color:#dbeff2}.pulse-proof span{display:block;color:#a9c5d3;font-size:10px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px}
+.debrief{display:none;margin:18px 0;border:1px solid #4c7b83;border-radius:16px;background:#132739;padding:20px}.debrief.visible{display:block}.debrief h2{margin:4px 0 5px;font-size:24px}.debrief p{color:#b9d1dc;font-size:12px}.debrief .section-title{font-size:17px;margin:17px 0 8px}.debrief-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.debrief-stat{background:#0c1c2b;border:1px solid #305064;border-radius:12px;padding:12px}.debrief-stat strong{display:block;font-size:23px;color:#bff4e8}.debrief-stat span{font-size:11px;color:#afc4d3}
+.turning-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.turning{border:1px solid #315365;background:#0d2332;border-radius:10px;padding:11px}.turning strong{display:block;font-size:13px}.turning p{margin:5px 0 9px}.decision-impact{font-variant-numeric:tabular-nums;font-weight:750;color:#b7eada}
+.guide-choice{display:flex;align-items:center;gap:10px;border:1px solid #38546a;border-radius:10px;background:#14293a;padding:12px;margin-top:12px;color:#e0eff5;font-size:13px}.guide-choice input{accent-color:#79dfc8;width:18px;height:18px}
+@media(max-width:760px){.pulse{grid-template-columns:1fr;gap:10px}.pulse-proof{border-left:0;border-top:1px solid #3b5b68;padding:9px 0 0}.debrief-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.turning-list{grid-template-columns:1fr}}
+@media(max-width:620px){.coach{padding:12px 14px;margin-bottom:11px}.pulse{margin-bottom:11px;padding:12px 14px}.pulse-title{font-size:15px}.debrief{padding:15px}}
+/* v0.9 – measured visual consequences, short opening, accessibility */
+:root{--ice:#74e6f0;--hot:#ffa17c}
+.briefing-scene{position:relative;overflow:hidden;border:1px solid #4c6f83;border-radius:14px;background:radial-gradient(circle at 80% 50%,#1d5667 0%,transparent 46%),linear-gradient(125deg,#153747,#101c2e);padding:16px;margin:15px 0 4px;display:flex;align-items:center;gap:15px}
+.briefing-scene::after{content:'';pointer-events:none;position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,#98f5e51a 49%,transparent 67%);transform:translateX(-105%);animation:briefShine 7s ease-in-out infinite}
+@keyframes briefShine{55%,100%{transform:translateX(105%)}}
+.brief-icon{flex:none;display:grid;place-items:center;width:66px;height:66px;border-radius:50%;border:2px solid #84f4e4;color:#e2fafa;background:#163c4b;font-size:35px;box-shadow:0 0 27px #72e0d62b}
+.brief-copy strong{display:block;font-size:17px;letter-spacing:-.2px}.brief-copy small{display:block;font-size:12px;color:#c0d6e0;line-height:1.55;margin-top:3px}.brief-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.1px;color:#ffd7a2;margin-bottom:4px}
+.impact-theater{border:1px solid #326273;border-radius:16px;background:linear-gradient(125deg,#103041,#0d2539);padding:16px 18px;margin:0 0 15px;box-shadow:0 10px 32px #0003;position:relative;overflow:hidden}
+.impact-theater::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#73c6df,#7ee9c1,#eec17d)}
+.impact-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.impact-title{font-size:18px;font-weight:850;letter-spacing:-.3px;margin-top:3px}.impact-kicker{color:#a3e8dc;font-size:10px;text-transform:uppercase;letter-spacing:1.6px;font-weight:800}
+.impact-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.impact-controls button,.impact-jump{border:1px solid #49768a;border-radius:9px;color:#e9f8f5;background:#173b4b;padding:9px 11px;min-height:40px;font-size:12px;font-weight:750}.impact-controls button:disabled{opacity:.35}.impact-controls button:hover,.impact-jump:hover{background:#255269}.impact-jump{background:#8be3d4;color:#0d2f38;border:0;font-weight:850}
+.impact-chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:13px}.impact-stage{border:1px solid #36596d;background:#0a2535;border-radius:11px;text-align:left;padding:11px 12px;min-width:0;color:#c6dce5;transition:background .2s,border-color .2s}.impact-stage.active{background:#154253;border-color:#8fefe0;box-shadow:inset 0 0 0 1px #4ea9996c}.impact-stage small{display:block;font-size:10px;letter-spacing:1.1px;color:#9cb9c5;text-transform:uppercase;font-weight:800}.impact-stage strong{display:block;color:#effdfa;font-size:13px;line-height:1.4;margin-top:5px}.impact-stage em{display:block;font-size:11px;line-height:1.5;color:#b6cad9;font-style:normal;margin-top:4px}
+.impact-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:10px;color:#9fbdc9;font-size:11px}.impact-focus{font-weight:700;color:#a6efdf}
+.impact-flow{fill:none;stroke:#91ffdc;stroke-width:5;stroke-linecap:round;opacity:.92;filter:drop-shadow(0 0 4px #73eacc)}.impact-flow.goods{stroke:#f2ce8d}.impact-flow.impact-dim{stroke-opacity:.4;stroke-width:3}.impact-orb{fill:#eafff9;stroke:#92e9df;stroke-width:1.5;filter:drop-shadow(0 0 5px #6aefcf)}.impact-orb.goods{fill:#fff2bf;stroke:#efb969}
+.impact-halo{fill:none;stroke:#f1c77e;stroke-width:3;opacity:.92;transform-box:fill-box;transform-origin:center;animation:impactExpand 2.3s ease-out infinite}.impact-halo.two{animation-delay:.7s}.impact-halo.recovery{stroke:#7ef3cb}
+@keyframes impactExpand{0%{opacity:.85;transform:scale(.55)}80%,100%{opacity:0;transform:scale(2.3)}}
+.impact-feedback{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:8;padding:12px 17px;border-radius:12px;background:#153d42;border:1px solid #76bcae;color:#eefffc;box-shadow:0 12px 40px #0007;font-size:13px;font-weight:750;max-width:min(90vw,490px);text-align:center;pointer-events:none;opacity:0;transition:opacity .22s}.impact-feedback.visible{opacity:1}
+@media(max-width:760px){.impact-theater{padding:13px 13px;margin-bottom:10px}.impact-title{font-size:16px}.impact-chain{grid-template-columns:1fr;gap:6px}.impact-stage{padding:9px 11px}.impact-stage strong{font-size:12px}.impact-stage em{font-size:11px;margin-top:2px}.briefing-scene{padding:11px;gap:10px}.brief-icon{width:47px;height:47px;font-size:25px}.brief-copy strong{font-size:15px}}
+@media(max-width:380px){.impact-controls button,.impact-jump{padding:9px 10px}.impact-foot{gap:6px}}
+@media(prefers-reduced-motion:reduce){.briefing-scene::after,.impact-halo{animation:none!important}.impact-orb{display:none}.impact-stage{transition:none}}
+
+/* v1.0 GAME EXPERIENCE: compact, playable phone layout and accessible feedback */
+:root{--bg:#07111a;--panel:#10202e;--accent:#7cf1cf;--muted:#9eb6c7}
+body{background:radial-gradient(ellipse 1000px 560px at 50% -180px,#174555 0,transparent 72%),#07121d}
+header{border-bottom-color:#315264}.brand-sub{letter-spacing:1.7px}
+button{touch-action:manipulation}button:active:not(:disabled){transform:translateY(1px)}
+.command-brief{border:1px solid #3a786f;background:linear-gradient(135deg,#123d3d,#142c40);border-radius:13px;padding:13px 14px;margin-top:14px;box-shadow:inset 0 1px #ffffff10}
+.command-kicker{color:#a9f6da;font-weight:850;font-size:10px;letter-spacing:1.5px}
+.command-summary{font-weight:800;font-size:15px;line-height:1.35;margin:6px 0 5px}
+.command-context{font-size:12px;line-height:1.5;color:#bfd7dd}
+.turn-small{float:right;font-size:10px;color:#8cc9c0;letter-spacing:1.2px}
+.world-views{display:none;gap:6px;margin-bottom:11px}.view-btn{border:1px solid #406077;background:#152a3c;color:#c8dbe5;border-radius:12px;min-height:44px;padding:10px 7px;font-size:11px;font-weight:750;flex:1;line-height:1.15}.view-btn.active{background:#7cf1cf;color:#092732;border-color:#7cf1cf}
+.sticky-step{display:none}
+.chapter-check{display:none;align-items:start;gap:12px;padding:13px 15px;border:1px solid #a6d7b6;border-radius:14px;background:linear-gradient(135deg,#183d39,#132c42);margin:14px 0 0}.chapter-check.visible{display:flex}.chapter-check .chapter-icon{font-size:23px;color:#b7f2c8}.chapter-check strong{font-size:14px;color:#eaffee}.chapter-check p{font-size:12px;color:#c2dfd9;margin:4px 0}.chapter-check button{margin-left:auto;background:none;border:0;font-size:23px;line-height:1;min-width:36px;min-height:36px}
+#control-panel .eyebrow{display:block}#control-panel .heading{font-size:18px}
+.modal{max-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain}.modal h1{line-height:1.13}
+@media(max-width:760px){
+ body{font-size:14px}.shell{display:flex;flex-direction:column;padding:0 12px 125px;max-width:100%}
+ .shell>header{order:0;display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:13px 0 10px;height:auto}
+ header .brand{gap:10px}.symbol{width:33px;height:33px}.brand-name{font-size:20px;letter-spacing:3px}.brand-sub{font-size:9px;margin-top:3px}
+ .top-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;align-items:stretch}.top-pill{padding:6px 7px;min-width:0;border-radius:9px}.top-pill small{font-size:8px;letter-spacing:.6px}.top-pill strong{font-size:12px;white-space:nowrap}.top-stats #restart-btn{grid-column:span 4;width:100%;padding:7px;min-height:34px}
+ #chapter-check{order:1}.coach{order:1;margin-top:10px}.layout{display:contents!important}.aside{order:2;display:flex;flex-direction:column;gap:9px;margin-top:9px}#control-panel{order:0!important}.aside>.panel:not(#control-panel){order:1}
+ #control-panel{padding:15px!important;border-color:#44877f;box-shadow:0 10px 32px #0012}#control-panel .heading{font-size:19px}#control-panel .tab-strip{margin:12px 0 10px}
+ .quick-pickers{display:grid;grid-template-columns:1fr 1fr;gap:7px 9px;margin:13px 0!important}.quick-pickers label{margin:0!important;font-size:11px!important}.quick-pickers label[for=region-picker]{grid-column:1;grid-row:1}.quick-pickers label[for=action-picker]{grid-column:2;grid-row:1}.quick-pickers select{min-width:0;width:100%;font-size:14px!important;min-height:46px!important;padding:8px 6px!important}
+ #action-list{display:none}.action-item{min-height:47px}.tab{min-height:42px;font-size:12px}
+ #action-preview{margin-top:10px;padding-top:9px}.impact{margin:7px 0}.impact span{font-size:11px}.mobile-action-desc{margin:7px 0 0!important}.forecast{margin-top:10px;padding:10px}
+ #forecast .forecast-intro{font-size:11px}.forecast-note{font-size:10px}.forecast-compare{gap:6px}
+ #advance-btn{min-height:48px}
+ #world-pulse{order:3;margin:10px 0 0;padding:13px 14px}.pulse-proof{font-size:11px}
+ #impact-theater{order:4;margin:11px 0 10px;padding:13px}.impact-top{align-items:flex-start}.impact-chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.impact-stage{padding:8px 7px;min-width:0}.impact-stage strong{font-size:10px!important;line-height:1.3}.impact-stage em{display:none}.impact-stage small{font-size:9px}.impact-foot{font-size:10px}
+ .left{order:5;display:flex!important;flex-direction:column;gap:10px}.world-views{display:flex}.left>.panel{order:0!important}
+ .left[data-view="world"] #lens-panel,.left[data-view="world"] #timeline-panel,.left[data-view="world"] #history-panel{display:none}
+ .left[data-view="causes"] #world-map,.left[data-view="causes"] #region-detail,.left[data-view="causes"] #timeline-panel,.left[data-view="causes"] #history-panel{display:none}
+ .left[data-view="history"] #world-map,.left[data-view="history"] #region-detail,.left[data-view="history"] #lens-panel{display:none}
+ #world-map .worldmap{min-height:220px;max-height:320px}#world-map .panel-head{padding:13px 14px 0}.map-wrap{padding:0 4px}
+ #world-debrief{order:6}.footer{order:7}.sticky-step{display:flex;position:fixed;z-index:7;left:0;right:0;bottom:0;background:#071b29f5;border-top:1px solid #4f7c83;padding:9px max(12px,env(safe-area-inset-right)) calc(9px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));align-items:center;gap:10px;box-shadow:0 -12px 35px #0008;backdrop-filter:blur(14px);justify-content:space-between}
+ .sticky-text{display:flex;flex-direction:column;gap:1px;min-width:74px;flex:0 0 76px}.sticky-text strong{font-size:10px;color:#9fe9da}.sticky-text span{font-size:10px;color:#c5d7dd;line-height:1.15}.sticky-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;flex:1}
+ .sticky-step button{min-height:49px;padding:8px 7px;border:0;border-radius:11px;font-size:12px;font-weight:850;line-height:1.25}.sticky-apply{background:#86edce;color:#09262b}.sticky-next{background:#294d63;color:white;border:1px solid #5b91a3!important}.sticky-step button:disabled{opacity:.38}
+ .modal-backdrop{padding:12px;align-items:center}.modal{padding:17px 18px;border-radius:17px}.modal h1{font-size:27px;margin:5px 0}.modal p{font-size:12px;line-height:1.45}.modal .mandate-card small{font-size:11px}.modal .guide-choice{margin-top:8px;padding:8px}.modal .primary{min-height:48px}.modal .modal-body>.label-sm{display:none}
+ .mandate-grid{grid-template-columns:1fr!important;gap:7px}.mandate-card{padding:9px 11px!important}.mandate-card small{font-size:11px;line-height:1.35}
+ .briefing-scene{padding:10px;gap:10px}.brief-icon{width:44px;height:44px;font-size:25px}.brief-copy strong{font-size:14px}.brief-copy small{font-size:11px}.brief-tag{font-size:9px}
+ .impact-feedback{bottom:108px;max-width:calc(100vw - 35px)}
+}
+@media(max-width:350px){.shell{padding-inline:9px}.top-pill small{font-size:7.5px}.top-pill strong{font-size:11px}.sticky-text{flex-basis:60px;min-width:60px}.sticky-step button{font-size:11px}.quick-pickers select{font-size:12px!important}.impact-stage{padding:6px 5px}.impact-stage strong{font-size:9px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+  <div class="brand"><div class="symbol" aria-hidden="true"><span></span></div><div><div class="brand-name">CASCADE</div><div class="brand-sub">BLACKOUT WINTER · DEMO</div></div></div>
+  <div class="top-stats"><div class="top-pill"><small>Week</small><strong id="week-label">01 / 24</strong></div><div class="top-pill"><small>Mandate</small><strong id="mandate-label">Guardian</strong></div><div class="top-pill special"><small>Influence</small><strong id="influence-label">6</strong></div><div class="top-pill"><small>Actions</small><strong id="actions-label">2 left</strong></div><button class="ghost" id="restart-btn" title="Start a new world">New run ↻</button></div>
+</header>
+
+<div class="chapter-check" id="chapter-check" aria-live="polite"><span class="chapter-icon">✦</span><div><strong id="chapter-title">First winter checkpoint</strong><p id="chapter-desc"></p></div><button type="button" id="chapter-dismiss" aria-label="Dismiss checkpoint">×</button></div>
+<div class="coach" id="tour-coach" aria-live="polite"><div class="coach-top"><strong id="tour-label">PLAY THE FIRST CRISIS</strong><span class="coach-progress" id="tour-progress">STEP 1 / 5</span></div><p id="tour-message"></p><div class="coach-actions"><button id="tour-jump" type="button">Show me where →</button><button id="tour-skip" type="button" class="coach-skip">Skip guide</button></div></div>
+<div class="pulse" id="world-pulse" aria-live="polite"><div><div class="eyebrow">◈ Live network readout</div><div class="pulse-title" id="pulse-title">Winter conditions are gathering</div><div class="pulse-detail" id="pulse-desc">Every regional decision feeds back into the network.</div></div><div class="pulse-proof"><span>Evidence from the simulation</span><div id="pulse-proof">Week 01 · Monitor the first resource transfers.</div></div><button type="button" id="pulse-inspect">Inspect cause →</button></div>
+<section class="impact-theater" id="impact-theater" aria-label="World impact replay">
+  <div class="impact-top"><div><div class="impact-kicker" id="impact-week">MISSION BRIEF · WEEK 01</div><div class="impact-title" id="impact-title">The first decision belongs to you</div></div><div class="impact-controls"><button id="impact-replay" type="button">↻ Replay last week</button><button id="impact-motion" type="button" aria-pressed="true">Motion on</button></div></div>
+  <div class="impact-chain" id="impact-chain" role="group" aria-label="Three-step chain of events"></div>
+  <div class="impact-foot"><span id="impact-disclaimer">Pre-game network risk, not a measured event. Simulate a week to uncover real transfers.</span><div><button type="button" id="impact-target" class="impact-controls-btn impact-jump">Make a decision →</button></div></div>
+</section>
+<div class="layout">
+  <div class="left" data-view="world">
+    <nav class="world-views" aria-label="World information views"><button type="button" class="view-btn active" data-view="world" aria-pressed="true">◉ World map</button><button type="button" class="view-btn" data-view="causes" aria-pressed="false">◇ Why it happened</button><button type="button" class="view-btn" data-view="history" aria-pressed="false">↶ Timeline</button></nav>
+    <section class="panel" id="world-map" aria-label="Fictional world map">
+      <div class="panel-head"><div><div class="eyebrow">Aster / Global Network</div><div class="heading">The world is connected.</div><p class="subheading">Select a region to inspect or intervene.</p></div><div class="map-controls"><div class="map-key"><span>Stable</span><span>Pressure</span></div></div></div>
+      <div class="map-wrap"><svg class="worldmap" viewBox="0 0 1100 505" role="img" aria-label="Network map of twelve fictional regions" xmlns="http://www.w3.org/2000/svg"><defs>
+        <pattern id="sea-grid" width="43" height="43" patternUnits="userSpaceOnUse"><path d="M43 0H0V43" fill="none" stroke="#36566b" stroke-width=".7" opacity=".35"/></pattern>
+        <radialGradient id="land-gradient"><stop stop-color="#315774"/><stop offset="1" stop-color="#1d344c"/></radialGradient>
+        <filter id="soft-glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs><rect x="0" y="0" width="1100" height="505" fill="url(#sea-grid)" opacity=".66"/>
+      <path class="sea-lines" d="M0 185 Q320 80 600 225 T1100 130 M0 380 Q360 270 690 366 T1100 290"/>
+      <path class="terrain" fill="url(#land-gradient)" d="M54 181 L112 94 233 57 329 83 410 60 500 100 551 160 523 239 423 288 365 366 273 375 182 338 98 287Z"/>
+      <path class="terrain2" d="M403 307L494 290 573 326 631 411 602 469 514 467 445 407Z"/>
+      <path class="terrain" d="M646 92L749 61 857 90 989 72 1050 151 1036 266 1082 348 1018 442 899 456 828 392 747 383 679 318 635 215Z"/>
+      <g id="link-layer"></g><g id="impact-layer" aria-hidden="true" pointer-events="none"></g><g id="node-layer"></g></svg></div>
+      <div class="map-bottom"><div class="legend"><span><b style="background:var(--gold)"></b>energy</span><span><b style="background:var(--blue)"></b>logistics</span><span><b style="background:var(--green)"></b>essential goods</span><span><b style="background:var(--purple)"></b>trust</span></div><span>FICTIONAL WORLD · NOT REAL-WORLD DATA</span></div>
+    </section>
+    <section class="panel" id="region-detail" aria-label="Selected region details"><div class="detail-box"><div class="detail-left"><div class="eyebrow">Regional intelligence</div><h2 id="region-name">North Meridian</h2><div class="small" id="region-desc">Power exporter</div><div class="tags" id="region-tags"></div><div class="small" id="region-insight">Inspect regional conditions.</div></div><div class="detail-right" id="region-metrics"></div></div><div class="flow-intel" id="flow-intel" aria-live="polite"></div></section>
+    <section class="panel lens-panel" aria-label="Causality Lens" id="lens-panel"><div class="lens-heading"><div><div class="eyebrow">New / Causality Lens</div><div class="heading">Follow the consequences</div></div><div class="lens-switch" role="group" aria-label="Trace resource"><button id="lens-energy" class="active" aria-pressed="true">⚡ Energy</button><button id="lens-goods" aria-pressed="false">◈ Essentials</button></div></div><div id="lens-trace" aria-live="polite"></div></section>
+    <section class="panel timeline-panel" id="timeline-panel"><div class="timeline-head"><div><div class="eyebrow">The Archive</div><div class="section-title">World Stability Timeline</div></div><div><span class="label-sm">Global stability </span><span class="score" id="world-score">--</span></div></div>
+      <svg class="spark" viewBox="0 0 760 104" preserveAspectRatio="none" role="img" aria-label="Global stability history"><g id="spark-layer"></g></svg><div class="timeline-controls"><label for="fork-week">Rewind to</label><select id="fork-week" aria-label="Choose a saved week"></select><button class="ghost" id="fork-btn">↗ Fork timeline</button><span class="label-sm" id="fork-note">Choose a past week to try a different strategy.</span></div><div class="smallprint">Branching restores the saved state, resources, and random seed. The former future remains as a dotted comparison line.</div>
+    </section>
+    <section class="panel feed" id="history-panel"><div class="feed-top"><div><div class="eyebrow">Causal Record</div><div class="section-title">What changed and why</div></div><span class="label-sm">Latest events</span></div><div class="feed-items" id="event-feed" aria-live="polite"></div></section>
+  </div>
+  <div class="aside">
+    <section class="panel"><div class="eyebrow">Directive</div><div class="heading" id="objective-heading">Hold the line</div><div class="objective"><div class="label">Primary objective</div><div class="value" id="objective-value"></div><p id="objective-desc"></p><div class="objective-steps" id="objective-steps"></div></div><div class="world-flow" id="world-flow"></div><div class="hint">All three mandates operate on the same evolving world. You can use interventions from every category.</div></section>
+    <section class="panel" id="control-panel"><div class="eyebrow">YOUR NEXT MOVE <span class="turn-small" id="decision-step">01 / 24</span></div><div class="heading">Change the course of winter.</div><div class="command-brief" id="command-brief"><div class="command-kicker">MISSION STATUS</div><div class="command-summary" id="command-summary">Assess the weakest regional system and decide what to protect.</div><div class="command-context" id="command-context">Choose a region to investigate.</div></div><div class="quick-pickers"><label for="region-picker">Target region</label><select id="region-picker" aria-label="Target region"></select><label for="action-picker">Intervention</label><select id="action-picker" aria-label="Choose intervention"></select></div><div class="tab-strip" role="tablist" aria-label="Action categories"><button class="tab active" data-tab="Guardian" role="tab">Prevent</button><button class="tab" data-tab="Broker" role="tab">Redirect</button><button class="tab" data-tab="Catalyst" role="tab">Transform</button></div><div class="action-list" id="action-list"></div><div class="preview" id="action-preview"></div><div id="forecast"></div><button class="advance" id="advance-btn"><span>Advance one week</span><span>→</span></button><div class="hint">+2 Influence each week (maximum 9). You can make up to two interventions per week.</div></section>
+  </div>
+</div>
+<section class="debrief" id="world-debrief" aria-label="End of run world debrief"><div class="eyebrow">THE ARCHIVE / AFTER-ACTION REPORT</div><h2 id="debrief-heading">Your world, explained</h2><p id="debrief-intro"></p><div class="debrief-grid" id="debrief-stats"></div><div class="section-title">Turning points in the simulation</div><div id="debrief-turns" class="turning-list"></div><div class="section-title">Decisions with the largest modeled effect</div><p>Ranked by the three-week difference between acting and waiting, as estimated when each intervention was made. These are <strong>model counterfactuals</strong>, not proofs of what caused the final outcome.</p><div class="turning-list" id="debrief-decisions"></div><div style="margin-top:15px"><button type="button" id="debrief-new">Start another run ↗</button></div></section>
+<div class="footer">CASCADE / BLACKOUT WINTER DEMO v1.0 · All regions, events, numbers, and objectives are fictional · Locally playable, no account required</div>
+</div>
+<div id="sticky-step" class="sticky-step" aria-label="Quick game controls"><div class="sticky-text"><strong id="sticky-week">WEEK 01</strong><span id="sticky-status">Select an intervention</span></div><div class="sticky-buttons"><button type="button" id="sticky-apply" class="sticky-apply">Apply decision</button><button type="button" id="sticky-next" class="sticky-next">Next week →</button></div></div>
+<div class="impact-feedback" id="impact-feedback" role="status" aria-live="polite"></div>
+<div class="modal-backdrop" id="start-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><div class="eyebrow" id="modal-eyebrow">Continuity Directorate · Briefing 001</div><h1 id="modal-title">One world. Three ways to shape it.</h1><p id="modal-copy">A severe winter threatens Aster's energy and supply networks. Prevent the collapse, redirect its consequences, or engineer a controlled transformation. Choose a mandate, then make decisions that ripple through twelve connected regions.</p><div id="modal-body"><div class="briefing-scene" aria-label="Mission alert"><div class="brief-icon" aria-hidden="true">⚡</div><div class="brief-copy"><span class="brief-tag">NETWORK WARNING / BLACKOUT WINTER</span><strong>One weak grid. Twelve connected regions.</strong><small>North Meridian starts at just 44/100 energy reliability. One decision could affect the entire network.</small></div></div><div class="mandate-grid" id="mandate-options"><button class="mandate-card active" data-mandate="Guardian"><strong>◈ Guardian</strong><small>Keep the world stable. Protect essential services and public trust.</small></button><button class="mandate-card" data-mandate="Broker"><strong>⇄ Broker</strong><small>Defend critical trading hubs by moving pressure elsewhere.</small></button><button class="mandate-card" data-mandate="Catalyst"><strong>✧ Catalyst</strong><small>Drive institutional transitions without destroying resilience.</small></button></div><p class="label-sm">24 turns · 12 regions · playable offline after first visit</p></div><div class="modal-tools"><span class="label-sm" id="modal-footnote">Select a mandate to begin Blackout Winter.</span><button class="primary" id="start-btn">Enter the world →</button></div></div></div>
+<script>
+'use strict';
+const MAX_WEEK=24;
+const STAT_KEYS=['energy','logistics','goods','trust'];
+const STAT_NAMES={energy:'Energy',logistics:'Logistics',goods:'Essentials',trust:'Trust'};
+const STAT_COLORS={energy:'#eac17c',logistics:'#69c9e7',goods:'#95dbac',trust:'#c8a5ed'};
+const DEFAULT_SEED=941207;
+let lensFocus='energy';
+const REGION_DEFS=[
+{id:'meridian',name:'North Meridian',x:250,y:135,archetype:'Energy exporter',desc:'Winter-exposed power hub',energy:44,logistics:63,goods:62,trust:59,adapt:16,weather:1.5,neighbors:['vale','irongate','northbank','brine']},
+{id:'vale',name:'Valehold',x:122,y:253,archetype:'Agrarian basin',desc:'Food exporter; weak electrical grid',energy:58,logistics:58,goods:83,trust:70,adapt:20,weather:.6,neighbors:['meridian','brine','irongate']},
+{id:'irongate',name:'Irongate',x:368,y:235,archetype:'Industrial hub',desc:'High demand and efficient manufacturing',energy:63,logistics:78,goods:60,trust:54,adapt:22,weather:.8,neighbors:['meridian','vale','brine','northbank','ember','kestrel']},
+{id:'brine',name:'Brine Coast',x:242,y:353,archetype:'Trade port',desc:'Major shipping gateway',energy:63,logistics:75,goods:63,trust:62,adapt:15,weather:.35,neighbors:['vale','meridian','irongate','kestrel','glass']},
+{id:'northbank',name:'Northbank',x:437,y:102,archetype:'Finance center',desc:'Capital and contracts, energy dependent',energy:56,logistics:68,goods:60,trust:66,adapt:20,weather:1.2,neighbors:['meridian','irongate','ember','orion']},
+{id:'ember',name:'Ember Ridge',x:541,y:202,archetype:'Fuel producer',desc:'Abundant production, strained transport',energy:74,logistics:50,goods:58,trust:52,adapt:19,weather:1.0,neighbors:['northbank','irongate','kestrel','solmere','orion']},
+{id:'kestrel',name:'Kestrel Basin',x:531,y:383,archetype:'River network',desc:'Inland supply crossroads',energy:59,logistics:61,goods:71,trust:65,adapt:17,weather:.4,neighbors:['irongate','brine','ember','solmere','glass']},
+{id:'solmere',name:'Solmere',x:689,y:261,archetype:'Renewables leader',desc:'Flexible grid and technical workforce',energy:75,logistics:65,goods:61,trust:72,adapt:32,weather:.4,neighbors:['ember','kestrel','orion','glass']},
+{id:'orion',name:'Orion Fields',x:776,y:133,archetype:'Agrarian exporter',desc:'Vast farmland, remote trade routes',energy:60,logistics:53,goods:82,trust:67,adapt:18,weather:.8,neighbors:['northbank','ember','solmere','lumen']},
+{id:'glass',name:'Glass Harbor',x:853,y:336,archetype:'Trade port',desc:'High-throughput ocean logistics',energy:64,logistics:79,goods:67,trust:63,adapt:19,weather:.3,neighbors:['brine','kestrel','solmere','lumen','dawn']},
+{id:'lumen',name:'Lumen Bay',x:983,y:174,archetype:'Trade port',desc:'Premium manufacturing and shipping',energy:66,logistics:77,goods:62,trust:62,adapt:21,weather:.5,neighbors:['orion','glass','dawn']},
+{id:'dawn',name:'Dawnstep',x:987,y:416,archetype:'Research enclave',desc:'Small but rapidly adapting cities',energy:67,logistics:64,goods:66,trust:73,adapt:29,weather:.2,neighbors:['glass','lumen']}
+];
+const PORTS=['brine','glass','lumen'];
+const ACTIONS=[
+{id:'reserve',type:'Guardian',name:'Deploy emergency power',cost:3,desc:'Release up to 11 power units from the Directorate’s finite reserve. It protects this region temporarily; the reserve cannot be refilled.',preview:'Power reserve +up to 11 · finite global reserve',cooldown:3},
+{id:'repair',type:'Guardian',name:'Rebuild generating capacity',cost:4,desc:'Commit 6–8 essential units and a construction crew. Capacity up to +1.6/wk arrives after TWO weeks; each finished project needs 0.35 essentials/week for maintenance. Maximum two local permits.',preview:'up to +1.6 generation in 2 weeks · 6–8 materials upfront · upkeep 0.35/wk',cooldown:5},
+{id:'gridshare',type:'Guardian',name:'Grid-sharing agreement',cost:3,desc:'Spend 3 local essential units on cross-border connectors. Improve nearby electricity transfer limits, route goodwill and reliability without building generation.',preview:'Connected power links +0.55 · goodwill +10 · local goods −3',cooldown:5},
+{id:'shipments',type:'Guardian',name:'Emergency food convoy',cost:3,desc:'Deliver up to 12 essential units from the Directorate’s finite stockpile.',preview:'Essentials reserve +up to 12 · finite global reserve',cooldown:3},
+{id:'brief',type:'Guardian',name:'Public briefings',cost:2,desc:'Restore confidence and coordinate local communities. Cannot solve an underlying shortage on its own.',preview:'Trust +11 · adaptation +2',cooldown:3},
+{id:'divert',type:'Broker',name:'Divert freight capacity',cost:2,desc:'Borrow freight throughput from adjacent networks; surrounding regions lose capacity AND diplomatic goodwill.',preview:'Selected freight +0.8 · surrounding routes and goodwill suffer',cooldown:4},
+{id:'pact',type:'Broker',name:'Mutual aid pact',cost:3,desc:'Spend 3 local essential units to rebuild trust and ease regional export restrictions. Cooperation expands power and freight throughput.',preview:'Link goodwill +20 · integrity +10 · local goods −3',cooldown:5},
+{id:'ration',type:'Broker',name:'Temporary rationing',cost:1,desc:'Cut energy and essentials demand for three weeks, buying time at a cost to public trust.',preview:'Energy and goods demand −24% for 3 weeks · Trust −9',cooldown:5},
+{id:'corridor',type:'Broker',name:'Protect trade corridor',cost:3,desc:'Fund one permanent corridor upgrade per region. It needs 6 local essentials upfront plus 0.25/week for upkeep; further upgrades require other hubs.',preview:'Freight links +0.65 · local goods −6 · upkeep 0.25/wk',cooldown:5},
+{id:'experiment',type:'Catalyst',name:'Policy experiment',cost:2,desc:'Test new institutions and build one kind of reform support, at a temporary cost to electricity and trust. Combine it with another approach.',preview:'Reform pressure +25 · adaptation +8 · capacity −0.4',cooldown:4},
+{id:'reform',type:'Catalyst',name:'Force restructuring',cost:3,desc:'Raise pressure and adaptation at the cost of power and trust. A lasting regional reform requires TWO distinct supporting policy instruments—not repeated restructuring alone.',preview:'Reform pressure +38 · adaptation +11 · power −0.8',cooldown:5},
+{id:'stress',type:'Catalyst',name:'Trade stress test',cost:2,desc:'Expose fragile routes to trigger adaptation, but disrupt shipments and reduce available essential stocks.',preview:'Pressure +21 · adaptation +7 · route integrity −9',cooldown:4},
+{id:'microgrid',type:'Catalyst',name:'Distributed microgrids',cost:4,desc:'Spend 4 essentials on instant distributed generation and storage. These decentralized assets require 0.2 essentials/week upkeep.',preview:'Generation +1.9/wk · stock −4 · upkeep −0.2/wk',cooldown:6}
+];
+const MANDATE_TEXT={
+Guardian:{headline:'Hold the line',subtitle:'Prevent runaway collapse',summary:'Maintain essential services while containing cumulative shortages and preventing cascading failures.'},
+Broker:{headline:'Move the pressure',subtitle:'Preserve the trading network',summary:'Keep ports functioning while moving real shipments through capacity-constrained routes.'},
+Catalyst:{headline:'Change the system',subtitle:'Transform without collapse',summary:'Regional reforms need two different policy instruments per region, alongside enough momentum and adaptation. Transform without collapsing the world.'}
+};
+const ALPHA_SAVE_KEY='cascade_blackout_v11_save';
+let persistenceEnabled=false;
+let saveFailure=false;
+function loadProgress(){
+ try{const raw=localStorage.getItem(ALPHA_SAVE_KEY);if(!raw)return null;const payload=JSON.parse(raw);
+  if(payload?.schema!==1||!payload.state||!Array.isArray(payload.snapshots)||!REGION_DEFS.some(r=>r.id===payload.state.selected)||!['Guardian','Broker','Catalyst'].includes(payload.state.mandate)||payload.state.week<1||payload.state.week>24)return null;
+  return payload;
+ }catch(e){return null;}
+}
+function saveProgress(){
+ if(!persistenceEnabled||!state||saveFailure)return;
+ try{localStorage.setItem(ALPHA_SAVE_KEY,JSON.stringify({schema:1,state,snapshots,formerTimeline,selectedAction,lensFocus,dismissedCheckpoint}));}
+ catch(e){saveFailure=true;console.warn('Progress could not be saved on this device.');}
+}
+function resumeProgress(payload){
+ if(!payload)return;
+ stopImpactReplay();impactStage=0;state=payload.state;snapshots=payload.snapshots;formerTimeline=payload.formerTimeline||null;
+ chosenMandate=state.mandate;activeTab=state.mandate;selectedAction=payload.selectedAction||ACTIONS.find(a=>a.type===activeTab).id;
+ lensFocus=payload.lensFocus||'energy';dismissedCheckpoint=!!payload.dismissedCheckpoint;branchWeek=state.week;
+ tourActive=false;tourStep=0;setWorldView('world');$('start-modal').style.display='none';render();
+}
+let state=null;
+let snapshots=[];
+let formerTimeline=null;
+let chosenMandate='Guardian';
+let activeTab='Guardian';
+let selectedAction='reserve';
+let branchWeek=1;
+let tourActive=false, tourStep=0, tourTarget='';
+let impactStage=0, impactTimer=null, impactMotion=true, feedbackTimer=null;
+const $=id=>document.getElementById(id);
+const clamp=(n,min=0,max=100)=>Math.max(min,Math.min(max,n));
+const round=n=>Math.round(n);
+const copy=x=>JSON.parse(JSON.stringify(x));
+const rById=id=>state.regions.find(r=>r.id===id);
+const displayWeek=n=>String(n).padStart(2,'0');
+const val=(obj,key)=>round(obj[key]);
+function avg(list){return list.reduce((a,b)=>a+b,0)/(list.length||1)}
+function stability(){return avg(state.regions.map(r=>.3*r.energy+.25*r.logistics+.25*r.goods+.2*r.trust))}
+function globalTrust(){return avg(state.regions.map(r=>r.trust))}
+function adaptation(){return avg(state.regions.map(r=>r.adapt))}
+function criticalRegions(){return state.regions.filter(r=>Math.min(...STAT_KEYS.map(k=>r[k]))<32).length}
+function portLogistics(){return avg(PORTS.map(id=>rById(id).logistics))}
+function countReforms(){return state.regions.filter(r=>r.reformed).length}
+function toolVariety(r){let bits=r.policyTools||0,n=0;while(bits){bits&=bits-1;n++}return n}
+function goals(){
+ const stable=stability();
+ if(state.mandate==='Guardian')return [
+ {title:'World stability ≥ 66',value:round(stable),target:66,ok:stable>=66},
+ {title:'Energy unmet ≤ 45',value:round(state.cumulativeEnergyUnmet),target:45,ok:state.cumulativeEnergyUnmet<=45,reverse:true},
+ {title:'Essentials unmet ≤ 45',value:round(state.cumulativeGoodsUnmet),target:45,ok:state.cumulativeGoodsUnmet<=45,reverse:true}];
+ if(state.mandate==='Broker')return [
+ {title:'Port logistics ≥ 70',value:round(portLogistics()),target:70,ok:portLogistics()>=70},
+ {title:'Delivered freight ≥ 570',value:round(state.goodsDelivered),target:570,ok:state.goodsDelivered>=570},
+ {title:'Essentials unmet ≤ 70',value:round(state.cumulativeGoodsUnmet),target:70,ok:state.cumulativeGoodsUnmet<=70,reverse:true}];
+ return [
+ {title:'Regional reforms ≥ 4',value:countReforms(),target:4,ok:countReforms()>=4},
+ {title:'Avg. adaptation ≥ 30',value:round(adaptation()),target:30,ok:adaptation()>=30},
+ {title:'World stability ≥ 55',value:round(stable),target:55,ok:stable>=55}];
+}
+function prng(){let x=state.seed>>>0;x^=x<<13;x^=x>>>17;x^=x<<5;state.seed=x>>>0;return(state.seed>>>0)/4294967296}
+function report(text,kind='neutral'){state.events.push({week:Math.min(state.week,24),text,kind});if(state.events.length>175)state.events.shift()}
+// The v0.4 simulation tracks physical production, consumption, storage, and transit.
+const fixed=n=>Math.round(n*1000)/1000;
+function makeRegion(d){
+ const industrial=d.archetype==='Industrial hub'||d.archetype==='Finance center'||d.archetype==='Trade port';
+ const grower=d.archetype==='Agrarian basin'||d.archetype==='Agrarian exporter';
+ const generator=d.archetype==='Energy exporter'||d.archetype==='Fuel producer'||d.archetype==='Renewables leader';
+ const powerNeed=industrial?12.6:10.2;
+ const goodsNeed=industrial?11.9:10.5;
+ const powerCap=fixed(powerNeed*(.71+d.energy*.0054+(generator?.19:0)));
+ const goodsOutput=fixed(goodsNeed*(.69+d.goods*.004+(grower?.30:0)));
+ return {...copy(d),reformed:false,pressure:0,policyTools:0,shortageWeeks:0,goodsShortageWeeks:0,
+    powerNeed,goodsNeed,powerCap,goodsOutput,powerStock:6,powerMax:18,goodsStock:goodsNeed*1.25,goodsMax:35,
+    rationRemain:0,policyDowntime:0,actionCooldowns:{},powerImports:0,powerExports:0,freightImports:0,freightExports:0,
+    lastEnergyUnmet:0,lastGoodsUnmet:0,energyServed:1,goodsServed:1,autonomousUpgrades:0,
+    councilCooldown:0,tradeRestriction:0,councilActions:0,weatherDowntime:0,harvestRemain:0,gridProjects:0,microgridProjects:0,corridorProjects:0,upkeepMisses:0,lastMaintenance:0};
+}
+function makeLinks(){let seen=new Set(),links=[];
+ for(const d of REGION_DEFS)for(const id of d.neighbors){let key=[d.id,id].sort().join(':');if(seen.has(key))continue;seen.add(key);
+ const target=REGION_DEFS.find(x=>x.id===id);
+ const port=(PORTS.includes(d.id)||PORTS.includes(id));
+ links.push({id:key,a:d.id,b:id,capacity:port?3.4:2.85,powerCapacity:2.2,integrity:Math.min(95,(d.logistics+target.logistics)/2+7),cooperation:clamp((d.trust+target.trust)/2+9,40,92)});
+ }return links;
+}
+function initialState(mandate){return{
+ week:1,mandate,regions:REGION_DEFS.map(makeRegion),links:makeLinks(),transit:[],
+ centralPower:30,centralGoods:64,influence:6,ap:2,selected:'meridian',seed:DEFAULT_SEED,projects:[],constructionCrews:2,
+ events:[],actionsUsed:0,actionHistory:[],weekHistory:[],crisisWeeks:0,finished:false,branches:0,
+ cumulativeEnergyUnmet:0,cumulativeGoodsUnmet:0,goodsDelivered:0,powerTraded:0,ledger:{made:0,used:0,waste:0,lost:0,invested:0},
+ weekly:{energyUnmet:0,goodsUnmet:0,goodsDelivered:0,powerTraded:0},maxLinkFlow:0,
+  regionalPolicies:0,randomShocks:0 }}
+function saveSnapshot(){snapshots.push({week:state.week,score:stability(),world:copy(state)});}
+function startGame(mandate){dismissedCheckpoint=false;setWorldView('world');stopImpactReplay();impactStage=0;tourActive=false;tourStep=0;renderTour();lensFocus='energy';state=initialState(mandate);state.impactHistory=[];snapshots=[];formerTimeline=null;chosenMandate=mandate;activeTab=mandate;selectedAction=ACTIONS.find(a=>a.type===activeTab).id;branchWeek=1;
+ report('Winter pressure is building. Two construction crews serve twelve regions. Grid rebuilds require local materials, maintenance, and two weeks to finish.','crisis');
+ report('Regional trade relationships modify how much electricity and freight can move between neighbors.','neutral');report('Directive issued: '+MANDATE_TEXT[mandate].headline+'.');
+ saveSnapshot();$('start-modal').style.display='none';render();}
+function selectRegion(id){if(!rById(id))return;const prior=state.selected;state.selected=id;if(tourActive&&tourStep===0&&prior!==id)advanceTour();render()}
+function adjacentLinks(id){return state.links.filter(l=>l.a===id||l.b===id)}
+function linkedNeighbor(l,id){return l.a===id?l.b:l.a}
+function actionBlock(a,r){if(state.finished)return 'Run complete';if(state.ap<=0)return 'No actions left this week';if(state.influence<a.cost)return 'Not enough Influence';
+ if(r.actionCooldowns[a.id]!==undefined&&state.week-r.actionCooldowns[a.id] < a.cooldown)return 'Available week '+(r.actionCooldowns[a.id]+a.cooldown);
+ if(a.id==='reserve'&&state.centralPower<.5)return 'Directorate power reserve empty';
+ if(a.id==='shipments'&&state.centralGoods<.5)return 'Directorate goods reserve empty';
+ if((a.id==='repair'||a.id==='microgrid')&&r.powerCap>=r.powerNeed*1.48)return 'Local generation capacity full';
+ if(a.id==='repair'&&(r.gridProjects+state.projects.filter(p=>p.id===r.id).length>=2))return 'Two local construction permits already committed';
+ if(a.id==='repair'&&state.projects.length>=state.constructionCrews)return 'Construction crews busy (2 maximum)';
+ if(a.id==='repair'&&state.week>22)return 'Not enough weeks left to finish construction';
+ if(a.id==='repair'&&r.goodsStock+1e-6<6+2*r.gridProjects)return 'Need '+(6+2*r.gridProjects)+' local essentials for materials';
+ if((a.id==='gridshare'||a.id==='pact')&&r.goodsStock+1e-6<3)return 'Need 3 local essentials for this agreement';
+ if(a.id==='microgrid'&&r.goodsStock+1e-6<4)return 'Need 4 local essentials for components';
+ if(a.id==='corridor'&&r.corridorProjects>=1)return 'This region already has a protected corridor';
+ if(a.id==='corridor'&&r.goodsStock+1e-6<6)return 'Need 6 local essentials for corridor materials';
+ return '';
+}
+function applyAction(id,silent=false){const a=ACTIONS.find(x=>x.id===id);if(!a||!state)return;
+ const r=rById(state.selected);if(actionBlock(a,r))return;
+ // A paired, same-seed, three-week no-action comparison is captured BEFORE this action.
+ // Silent forecast branches intentionally do not generate their own history.
+ let actionEvidence=null;
+ if(!silent){const cf=compareIntervention(id,5);if(cf&&!cf.blocked&&cf.diffs.length){
+   const d=cf.diffs[cf.diffs.length-1];
+   actionEvidence={week:state.week,id,name:a.name,regionId:r.id,regionName:r.name,type:a.type,cost:a.cost,
+     stability:fixed(metricDelta(d,'stability')),energyAvoided:fixed(-metricDelta(d,'energyUnmet')),
+     goodsAvoided:fixed(-metricDelta(d,'goodsUnmet')),horizon:cf.horizon};
+ }}
+ state.influence-=a.cost;state.ap--;state.actionsUsed++;r.actionCooldowns[id]=state.week;
+ const near=adjacentLinks(r.id);
+ if(id==='reserve'){
+   const qty=Math.min(11,state.centralPower,r.powerMax-r.powerStock);r.powerStock+=qty;state.centralPower-=qty;
+   report('Emergency stockpile → '+r.name+': '+fixed(qty)+' energy units; Directorate reserve '+fixed(state.centralPower)+' remaining.','action');
+ }else if(id==='repair'){
+   const materials=6+2*r.gridProjects;r.goodsStock-=materials;state.ledger.invested+=materials;
+   state.projects.push({id:r.id,completeWeek:state.week+2,boost:1.6});
+   report('Grid rebuild started in '+r.name+': '+materials+' essential units committed; crew finishes in Week '+displayWeek(state.week+2)+'. Capacity will require upkeep.','action');
+ }else if(id==='gridshare'){
+   r.goodsStock-=3;state.ledger.invested+=3;for(const l of near){l.powerCapacity=Math.min(4.8,l.powerCapacity+.55);l.integrity=clamp(l.integrity+7);l.cooperation=clamp(l.cooperation+10)}
+   r.trust=clamp(r.trust+3);report('Grid-sharing agreement in '+r.name+' raised interconnector capacity and cross-border goodwill, costing three essential units.','action');
+ }else if(id==='shipments'){
+   const qty=Math.min(12,state.centralGoods,r.goodsMax-r.goodsStock);r.goodsStock+=qty;state.centralGoods-=qty;
+   report('Emergency convoy → '+r.name+': '+fixed(qty)+' essential units; Directorate reserve '+fixed(state.centralGoods)+' remaining.','action');
+ }else if(id==='brief'){
+   r.trust=clamp(r.trust+11);r.adapt=clamp(r.adapt+2);r.policyTools|=16;
+   report('Public briefings in '+r.name+' restored confidence, but did not create any new supplies.','action');
+ }else if(id==='divert'){
+   for(const l of near)l.capacity=Math.min(6,l.capacity+.8);
+   for(const l of state.links)if(!near.includes(l)&&(r.neighbors.includes(l.a)||r.neighbors.includes(l.b))){l.capacity=Math.max(1.1,l.capacity-.22);l.cooperation=clamp(l.cooperation-6)}
+   r.logistics=clamp(r.logistics+5);for(const n of r.neighbors)rById(n).logistics=clamp(rById(n).logistics-2);
+   report('Freight diverted through '+r.name+'. Adjacent corridors gained throughput while alternate routes lost capacity.','action');
+ }else if(id==='pact'){
+   r.goodsStock-=3;state.ledger.invested+=3;
+   for(const l of near){l.integrity=clamp(l.integrity+10);l.cooperation=clamp(l.cooperation+20)}
+   r.tradeRestriction=0;r.policyTools|=32;r.trust=clamp(r.trust+6);for(const n of r.neighbors)rById(n).trust=clamp(rById(n).trust+2);
+   report('Mutual aid pact signed in '+r.name+'. Local supplies funded cooperation and lifted local export safeguards.','action');
+ }else if(id==='ration'){
+   r.rationRemain=3;r.trust=clamp(r.trust-9);
+   report('Rationing in '+r.name+' reduced energy and food demand for three weeks at the cost of trust.','action');
+ }else if(id==='corridor'){
+   r.goodsStock-=6;state.ledger.invested+=6;r.corridorProjects++;
+   for(const l of near){l.capacity=Math.min(6,l.capacity+.65);l.integrity=clamp(l.integrity+18)}
+   r.logistics=clamp(r.logistics+8);
+   report('Transport corridor protected at '+r.name+'. Construction used 6 essential units, with 0.25/week maintenance committed.','action');
+ }else if(id==='experiment'){
+   r.pressure=clamp(r.pressure+25);r.policyTools|=1;r.adapt=clamp(r.adapt+8);r.trust=clamp(r.trust-7);r.powerCap=Math.max(3,r.powerCap-.4);
+   report('Policy experiment in '+r.name+' raised reform pressure but reduced generation and confidence.','action');
+ }else if(id==='reform'){
+   r.pressure=clamp(r.pressure+38);r.policyTools|=2;r.adapt=clamp(r.adapt+11);r.trust=clamp(r.trust-5);r.powerCap=Math.max(3,r.powerCap-.8);
+   report('Forced restructuring in '+r.name+' accelerated reform while temporarily damaging local supply.','action');
+ }else if(id==='stress'){
+   r.pressure=clamp(r.pressure+21);r.policyTools|=4;r.adapt=clamp(r.adapt+7);const consumed=Math.min(r.goodsStock,3);r.goodsStock-=consumed;state.ledger.invested+=consumed;
+   for(const l of near)l.integrity=clamp(l.integrity-9);
+   report('Market stress test in '+r.name+' consumed essential stocks and exposed transport weaknesses.','action');
+ }else if(id==='microgrid'){
+   r.goodsStock-=4;state.ledger.invested+=4;const inc=Math.min(1.9,r.powerNeed*1.48-r.powerCap);r.powerCap+=inc;r.powerMax+=4;r.powerStock+=2;r.microgridProjects++;r.policyTools|=8;r.adapt=clamp(r.adapt+10);
+   report('Microgrids in '+r.name+' added '+fixed(inc)+' permanent generation and expanded storage.','action');
+ }
+ if(!silent){if(actionEvidence)state.actionHistory.push(actionEvidence);
+   if(tourActive&&tourStep===3)advanceTour();render();}
+}
+function applyStoryBeat(currentWeek){
+ // Deterministic once a scenario seed is chosen, but unknown to the player.
+ // Forecasts sample multiple seeds rather than revealing a single future.
+ if(currentWeek>1 && prng()<.34){
+   const target=state.regions[Math.floor(prng()*state.regions.length)];
+   const category=prng(); state.randomShocks++;
+   if(category<.38){
+     target.weatherDowntime=Math.max(target.weatherDowntime,2);
+     report('Unanticipated turbine faults in '+target.name+': generation may fall this week and next.','crisis');
+   }else if(category<.72){
+     const adjacent=adjacentLinks(target.id);
+     if(adjacent.length){const route=adjacent[Math.floor(prng()*adjacent.length)];route.integrity=clamp(route.integrity-15);
+       report('Unexpected freight slowdown: '+rById(route.a).name+' ↔ '+rById(route.b).name+' lost route reliability.','crisis');}
+   }else{
+     target.harvestRemain=Math.max(target.harvestRemain,2);
+     report('Unexpected production windfall in '+target.name+' increases essential-goods output for two weeks.','success');
+   }
+ }
+ if(currentWeek===4){
+   for(const id of ['meridian','northbank'])rById(id).policyDowntime=3;
+   report('Polar front hit North Meridian and Northbank: grid capacity falls for three weeks. Downstream trade partners may be affected.','crisis');
+ }
+ if(currentWeek===8){for(const l of state.links)if(['brine','glass'].includes(l.a)||['brine','glass'].includes(l.b))l.integrity=clamp(l.integrity-24);
+   report('Ocean congestion damaged routes connected to Brine Coast and Glass Harbor; delayed shipments are now more likely.','crisis');}
+ if(currentWeek===13){for(const id of ['vale','orion','kestrel']){const r=rById(id);const before=r.goodsStock;r.goodsStock=Math.min(r.goodsMax,r.goodsStock+6);state.ledger.made+=r.goodsStock-before}
+   report('Seasonal harvest replenished inventories across three agricultural regions.','success');}
+ if(currentWeek===15){for(const id of ['vale','orion'])rById(id).goodsShortageWeeks=-4;
+   report('Late-season drought reduced agricultural production for four weeks in Valehold and Orion Fields.','crisis');}
+ if(currentWeek===19){for(const id of ['solmere','dawn'])rById(id).trust=clamp(rById(id).trust+6);
+   report('Regional accord: Solmere and Dawnstep reinforced institutional cooperation.','success');}
+ if(currentWeek>2&&currentWeek%6===0){const link=state.links[Math.floor(prng()*state.links.length)];link.integrity=clamp(link.integrity-10);
+   report('Minor route disruption: '+rById(link.a).name+' ↔ '+rById(link.b).name+' lost transport reliability.','neutral');}
+}
+function independentCouncils(){
+ for(const r of state.regions){
+   if(r.councilCooldown>0)r.councilCooldown--;
+   if(r.tradeRestriction>0)r.tradeRestriction--;
+   if(r.councilCooldown>0)continue;
+   let policy=null;
+   // Shortage relief costs political trust and temporarily lowers demand.
+   if(r.goodsStock<r.goodsNeed*.45 && (r.lastGoodsUnmet>.35 || r.goodsServed<.78) && r.rationRemain===0){
+     r.rationRemain=2;r.trust=clamp(r.trust-4);policy='local rationing';
+     report(r.name+' council instituted temporary rationing after essential-goods shortages; trust fell.','action');
+   }else if((r.archetype==='Trade port'||r.archetype==='Agrarian exporter') && r.goodsStock<r.goodsNeed*.85 && r.lastGoodsUnmet>.05){
+     r.tradeRestriction=3;r.trust=clamp(r.trust-2);for(const l of adjacentLinks(r.id))l.cooperation=clamp(l.cooperation-4);policy='export safeguards';
+     report(r.name+' council restricted exports to protect domestic inventory, reducing freight availability to neighbors.','action');
+   }else if(r.lastEnergyUnmet>.8 && r.goodsStock>=r.goodsNeed+3 && r.autonomousUpgrades<3){
+     r.goodsStock-=2.5;state.ledger.invested+=2.5;r.powerCap+=.38;r.adapt=clamp(r.adapt+2);r.autonomousUpgrades++;
+     policy='emergency grid investment';
+     report(r.name+' council invested 2.5 essential units to create local generation +0.38/wk.','success');
+   }
+   if(policy){r.councilActions++;r.councilCooldown=4;state.regionalPolicies++;}
+ }
+}
+function tick(silent=false){if(!state||state.finished)return;
+ const w=state.week, startingStability=stability();
+ applyStoryBeat(w);
+ // Scheduled construction completes only after its two-week lead time. Crew capacity is finite.
+ const completed=state.projects.filter(p=>p.completeWeek<=w);
+ for(const p of completed){const r=rById(p.id);const gain=Math.min(p.boost,Math.max(0,r.powerNeed*1.55-r.powerCap));r.powerCap+=gain;r.gridProjects++;r.adapt=clamp(r.adapt+2);report('Construction completed in '+r.name+': +'+fixed(gain)+' permanent generation. Maintenance due every week.','success')}
+ state.projects=state.projects.filter(p=>p.completeWeek>w);
+ independentCouncils();
+ const last=Object.fromEntries(state.regions.map(r=>[r.id,{...r}]));
+ const weekly={energyUnmet:0,goodsUnmet:0,goodsDelivered:0,powerTraded:0,goodsShipped:0};
+ // Freight requires one full week in transit; goods shipped in week N arrive in week N+1.
+ // Provenance captures physically measured flows; it is part of snapshots and timeline forks.
+ for(const r of state.regions){r.trace={week:w,openingGoods:r.goodsStock,openingPower:r.powerStock,
+   energyFrom:[],energyTo:[],goodsFrom:[],goodsTo:[],batteryUsed:0,charge:0,
+   produced:0,idealProduced:0,goodsConsumed:0,energyDemand:0,energyGeneration:0,foodDemand:0,maintenance:0};}
+ const arrived=state.transit.filter(s=>s.arrive===w);
+ state.transit=state.transit.filter(s=>s.arrive!==w);
+ for(const s of arrived){const to=rById(s.to);const accepted=Math.min(s.qty,to.goodsMax-to.goodsStock);
+   to.goodsStock+=accepted;state.ledger.waste+=s.qty-accepted;to.freightImports+=accepted;to.trace.goodsFrom.push({id:s.from,qty:accepted});weekly.goodsDelivered+=accepted;
+   state.goodsDelivered+=accepted;}
+ // Reset visible flow statistics; calculate unmet need before trade.
+ for(const r of state.regions){
+   r.powerImports=0;r.powerExports=0;r.freightExports=0;r.freightImports=arrived.filter(s=>s.to===r.id).reduce((t,s)=>t+s.qty,0);
+   r.lastEnergyUnmet=0;r.lastGoodsUnmet=0;
+   const ration=r.rationRemain>0?.76:1;
+   r.actualPowerNeed=r.powerNeed*ration*(1+(Math.max(0,5-Math.abs(w-6))*.058*r.weather)+(w>=13&&w<=21?(w>=16&&w<=19?.22:.15):0));
+   r.actualGoodsNeed=r.goodsNeed*ration*(w>=12&&w<=22?1.10:1);r.trace.energyDemand=r.actualPowerNeed;r.trace.foodDemand=r.actualGoodsNeed;
+   // New generating capacity competes for recurring essentials; absent maintenance, output degrades.
+   const upkeep=r.gridProjects*.35+r.microgridProjects*.20+r.corridorProjects*.25;const paid=Math.min(upkeep,r.goodsStock);r.goodsStock-=paid;state.ledger.invested+=paid;r.lastMaintenance=paid;r.trace.maintenance=paid;
+   const maintenancePenalty=upkeep-paid>.001?(upkeep-paid)*2.0:0;if(maintenancePenalty>.001)r.upkeepMisses++;
+   const shutdown=(r.policyDowntime>0?2.6:0)+(r.weatherDowntime>0?1.3:0)+maintenancePenalty;
+   r.generated=Math.max(0,r.powerCap-shutdown+(r.reformed?.9:0));r.trace.energyGeneration=r.generated;
+   r.powerExcess=Math.max(0,r.generated-r.actualPowerNeed);
+   r.powerDeficit=Math.max(0,r.actualPowerNeed-r.generated);
+ }
+ // Electricity moves immediately, but each bilateral interconnector has its own limit.
+ // Sources cannot export energy they require locally.
+ const receivers=state.regions.slice().sort((a,b)=>b.powerDeficit-a.powerDeficit);
+ for(const receiver of receivers){
+   const lines=adjacentLinks(receiver.id).slice().sort((a,b)=>b.integrity-a.integrity);
+   for(const link of lines){if(receiver.powerDeficit<.00001)break;
+     const sender=rById(linkedNeighbor(link,receiver.id));
+     if(sender.powerExcess<=.00001)continue;
+     const cap=link.powerCapacity*(link.integrity/100)*(.65+.0045*link.cooperation);
+     const outgoing=Math.min(sender.powerExcess,receiver.powerDeficit/.9,cap);
+     if(outgoing<=0)continue;
+     sender.powerExcess-=outgoing;sender.powerExports+=outgoing;sender.trace.energyTo.push({id:receiver.id,qty:outgoing});
+     receiver.powerImports+=outgoing*.9;receiver.trace.energyFrom.push({id:sender.id,qty:outgoing*.9});receiver.powerDeficit=Math.max(0,receiver.powerDeficit-outgoing*.9);
+     weekly.powerTraded+=outgoing*.9;
+   }
+ }
+ // Batteries smooth outages, but can only discharge/charge a limited amount per turn.
+ for(const r of state.regions){
+   const backup=Math.min(3.0,r.powerStock,r.powerDeficit);r.trace.batteryUsed=backup;r.powerStock-=backup;r.powerDeficit-=backup;
+   const charge=Math.min(2.2,r.powerExcess,r.powerMax-r.powerStock);r.trace.charge=charge;r.powerStock+=charge;r.powerExcess-=charge;
+   r.lastEnergyUnmet=Math.max(0,r.powerDeficit);weekly.energyUnmet+=r.lastEnergyUnmet;
+   r.energyServed=clamp(1-r.lastEnergyUnmet/Math.max(1,r.actualPowerNeed),0,1);
+   // Local food production depends on reliable power; agricultural regions get a drought penalty.
+   const drought=(r.goodsShortageWeeks<0)?3.2:0;
+   const produced=Math.max(0,(r.goodsOutput+(r.harvestRemain>0?.9:0))*(.72+.28*r.energyServed)*(w>=15&&w<=22?.95:1)-drought+(r.reformed?.45:0));
+   r.trace.idealProduced=Math.max(0,(r.goodsOutput+(r.harvestRemain>0?.9:0))*(w>=15&&w<=22?.95:1)-drought+(r.reformed?.45:0));r.trace.produced=produced;const space=r.goodsMax-r.goodsStock;r.goodsStock+=Math.min(space,produced);state.ledger.made+=produced;state.ledger.waste+=Math.max(0,produced-space);
+   const supplied=Math.min(r.actualGoodsNeed,r.goodsStock);r.trace.goodsConsumed=supplied;r.goodsStock-=supplied;state.ledger.used+=supplied;
+   r.lastGoodsUnmet=r.actualGoodsNeed-supplied;weekly.goodsUnmet+=r.lastGoodsUnmet;
+   r.goodsServed=clamp(supplied/Math.max(1,r.actualGoodsNeed),0,1);
+ }
+ // Schedule freight for the following week. Surplus stock is physically removed now.
+ // Route integrity and capacity are shared scarce constraints. No goods are conjured by moving them.
+ for(const link of state.links){
+   const a=rById(link.a),b=rById(link.b);
+   const requested=r=>Math.max(0,r.actualGoodsNeed*1.6-r.goodsStock);
+   const exportable=r=>Math.max(0,r.goodsStock-r.actualGoodsNeed*(r.tradeRestriction>0?1.75:.75));
+   let sender,receiver;
+   if(requested(a)>requested(b)&&exportable(b)>.05){sender=b;receiver=a}
+   else if(requested(b)>requested(a)&&exportable(a)>.05){sender=a;receiver=b}
+   else continue;
+   const eligible=Math.min(exportable(sender),requested(receiver));
+   const effective=link.capacity*(link.integrity/100)*(.65+.0045*link.cooperation)*Math.min(1,sender.logistics/55,receiver.logistics/55);
+   const shipped=Math.max(0,Math.min(effective,eligible));
+   if(shipped>.05){sender.goodsStock-=shipped;sender.freightExports+=shipped;sender.trace.goodsTo.push({id:receiver.id,qty:shipped*.97});
+     const delivered=shipped*.97;state.ledger.lost+=shipped-delivered;state.transit.push({from:sender.id,to:receiver.id,qty:delivered,arrive:w+1});
+     weekly.goodsShipped+=shipped;}
+ }
+ // Score systems from served demand and operating conditions, not arbitrary direct injections.
+ for(const r of state.regions){
+   const old=last[r.id];
+   r.energy=clamp(.67*old.energy+.33*(100*r.energyServed));
+   r.goods=clamp(.67*old.goods+.33*(100*r.goodsServed));
+   const links=adjacentLinks(r.id);
+   const infrastructure=avg(links.map(l=>l.integrity));
+   const exhaustion=Math.max(0,1-r.energyServed)*21+Math.max(0,1-r.goodsServed)*10;
+   r.logistics=clamp(.78*old.logistics+.22*(infrastructure*.87+7)-exhaustion*.23);
+   r.trust=clamp(old.trust+(64-old.trust)*.065-(1-r.energyServed)*8-(1-r.goodsServed)*10+(r.reformed?0.6:0));
+   r.pressure=clamp(r.pressure*.965+Math.max(0,75-100*r.energyServed)*.25+Math.max(0,75-100*r.goodsServed)*.19);
+   r.shortageWeeks=r.energyServed<.83?r.shortageWeeks+1:0;
+   r.goodsShortageWeeks=r.goodsShortageWeeks<0?r.goodsShortageWeeks+1:(r.goodsServed<.83?r.goodsShortageWeeks+1:0);
+   // Limited autonomous investments introduce adaptation and change future optimal decisions.
+   if(r.shortageWeeks>=3 && r.autonomousUpgrades<2 && r.goodsStock>=3){
+      r.powerCap+=.55;r.goodsStock-=3;state.ledger.invested+=3;r.autonomousUpgrades++;r.adapt=clamp(r.adapt+4);r.shortageWeeks=0;
+      report(r.name+' diverted essential stocks into an autonomous grid upgrade after repeated shortages.','success');
+   }
+   if(!r.reformed&&r.pressure>=62&&r.adapt>=32&&toolVariety(r)>=2){
+     r.reformed=true;r.powerCap+=1.05;r.goodsOutput+=.55;r.adapt=clamp(r.adapt+8);r.trust=clamp(r.trust+6);r.pressure=18;
+     report('Institutional transition in '+r.name+': sustained structural reform upgraded generation and local production.','success');
+   }
+   if(r.rationRemain>0)r.rationRemain--;
+   if(r.policyDowntime>0)r.policyDowntime--;
+   if(r.weatherDowntime>0)r.weatherDowntime--;
+   if(r.harvestRemain>0)r.harvestRemain--;
+   // Gradually restore impaired regional energy metrics when production is reliable.
+   const prevCritical=old.energy<44||old.goods<43||old.logistics<40||old.trust<32;
+   const critical=r.energy<44||r.goods<43||r.logistics<40||r.trust<32||r.energyServed<.65||r.goodsServed<.65;
+   if(!prevCritical&&critical)report(r.name+' entered critical conditions: '+(r.energyServed<.75?'electricity ':r.goodsServed<.75?'essential goods ':'system resilience ')+'fell below safe operating levels.','crisis');
+   if(prevCritical&&!critical)report(r.name+' recovered from critical conditions.','success');
+ }
+ // Route integrity has inertia and naturally recovers only slowly.
+ for(const l of state.links){l.integrity=clamp(l.integrity+.32);l.cooperation=clamp(l.cooperation+(.06*(68-l.cooperation)))}
+ state.crisisWeeks+=state.regions.filter(r=>r.energy<44||r.goods<43||r.logistics<40||r.trust<32||r.energyServed<.65||r.goodsServed<.65).length;
+ state.cumulativeEnergyUnmet+=weekly.energyUnmet;state.cumulativeGoodsUnmet+=weekly.goodsUnmet;state.powerTraded+=weekly.powerTraded;state.weekly=weekly;
+ const hardest=state.regions.slice().sort((a,b)=>(b.lastEnergyUnmet+b.lastGoodsUnmet)-(a.lastEnergyUnmet+a.lastGoodsUnmet))[0];
+ state.weekHistory.push({week:w,stability:fixed(stability()),change:fixed(stability()-startingStability),
+   energyUnmet:fixed(weekly.energyUnmet),goodsUnmet:fixed(weekly.goodsUnmet),goodsDelivered:fixed(weekly.goodsDelivered),
+   regionId:hardest.id,regionName:hardest.name,regionEnergy:fixed(hardest.lastEnergyUnmet),regionGoods:fixed(hardest.lastGoodsUnmet)});
+ captureImpact(w,last);
+ // Identify a visible network consequence every week that matters, not only arbitrary world events.
+ const highest=state.regions.slice().sort((a,b)=>(b.lastEnergyUnmet+b.lastGoodsUnmet)-(a.lastEnergyUnmet+a.lastGoodsUnmet))[0];
+ const affected=highest.lastEnergyUnmet+highest.lastGoodsUnmet;
+ if(affected>1)report('Network consequence in '+highest.name+': '+fixed(highest.lastEnergyUnmet)+' energy and '+fixed(highest.lastGoodsUnmet)+' essentials were unmet; neighboring stocks and routes determine next week\'s recovery.','crisis');
+ report('Week '+displayWeek(w)+': electricity traded '+fixed(weekly.powerTraded)+', freight arrived '+fixed(weekly.goodsDelivered)+', energy shortfall '+fixed(weekly.energyUnmet)+', essential shortfall '+fixed(weekly.goodsUnmet)+'. Council decisions: '+state.regionalPolicies+'.');
+ state.week++;
+ if(state.week>MAX_WEEK){state.finished=true;state.ap=0;report('The Directorate’s 24-week mandate ended. See the accumulated system cost, not just the final score.');}
+ else{state.ap=2;state.influence=Math.min(9,state.influence+2)}
+ if(!silent){if(tourActive&&tourStep===4)advanceTour();saveSnapshot();impactStage=1;if(state.finished){render();showEnd()}else{render();if(impactMotion)replayImpact();}}
+}
+
+// v0.9 presentation-only archive: every field comes from resolved simulation data.
+// Deliberately avoid changing production, scores, forecasts, or PRNG state.
+function captureImpact(week, previous){
+ if(!state.impactHistory)state.impactHistory=[];
+ const flows=[];
+ for(const r of state.regions){
+   for(const item of (r.trace?.energyFrom||[]))if(item.qty>.08)flows.push({from:item.id,to:r.id,kind:'power',qty:fixed(item.qty)});
+   for(const item of (r.trace?.goodsFrom||[]))if(item.qty>.08)flows.push({from:item.id,to:r.id,kind:'goods',qty:fixed(item.qty)});
+ }
+ flows.sort((a,b)=>b.qty-a.qty);
+ const changed=state.regions.map(r=>{
+   const prior=previous[r.id];
+   const delta={energy:fixed(r.energy-prior.energy),logistics:fixed(r.logistics-prior.logistics),goods:fixed(r.goods-prior.goods),trust:fixed(r.trust-prior.trust)};
+   const critical=+(r.lastEnergyUnmet+r.lastGoodsUnmet)*.6;
+   const largest=Object.entries(delta).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]))[0];
+   return {id:r.id,delta,metric:largest[0],change:largest[1],severity:Math.abs(largest[1])+critical,
+      energyUnmet:fixed(r.lastEnergyUnmet),goodsUnmet:fixed(r.lastGoodsUnmet)};
+ }).sort((a,b)=>b.severity-a.severity);
+ const actions=(state.actionHistory||[]).filter(a=>a.week===week).map(a=>({name:a.name,regionId:a.regionId,regionName:a.regionName}));
+ const relevantEvents=state.events.filter(e=>e.week===week && ['crisis','action','success'].includes(e.kind)).slice(-2).map(e=>({kind:e.kind,text:e.text}));
+ state.impactHistory.push({week,flows:flows.slice(0,8),changed:changed.slice(0,4),actions,events:relevantEvents});
+}
+function currentImpact(){return state?.impactHistory?.at(-1)||null}
+function impactContent(){
+ const frame=currentImpact();
+ if(!frame)return {title:'A winter system on the edge',week:'MISSION BRIEF · WEEK 01',focus:'meridian',
+  stages:[{label:'01 / PRESSURE',title:'North Meridian is vulnerable',detail:'Its starting energy reliability is 44/100.'},
+          {label:'02 / DEPENDENCY',title:'Twelve regions share networks',detail:'Power transfers are immediate; freight arrives one week later.'},
+          {label:'03 / YOUR RESPONSE',title:'Prevent, redirect, or transform',detail:'Choose an intervention, then advance the first week.'}],
+  proof:'Opening conditions only. No resource transfer is claimed until a week resolves.'};
+ const top=frame.changed[0];const flow=frame.flows[0];
+ const action=frame.actions[0];
+ const first=action?{label:'01 / PLAYER INTERVENTION',title:action.name,detail:`Committed in ${action.regionName}${frame.actions.length>1?` (+${frame.actions.length-1} other intervention${frame.actions.length>2?'s':''})`:''}.`}
+ :{label:'01 / INDEPENDENT SYSTEMS',title:'The world acts without you',detail:'Regional councils, seasonal demand, and autonomous production still resolve this week.'};
+ const network=flow?{label:'02 / MEASURED TRANSFER',title:`${REGION_DEFS.find(r=>r.id===flow.from).name} → ${REGION_DEFS.find(r=>r.id===flow.to).name}`,detail:`${flow.qty.toFixed(1)} ${flow.kind==='power'?'electricity':'essentials'} units ${flow.kind==='power'?'delivered by power connection':'arrived after shipping'}.`}
+ :{label:'02 / NETWORK READOUT',title:'No major cross-border transfer',detail:`No transfer above 0.08 units was recorded; local production and stocks determined outcomes.`};
+ const d=top?.change||0;
+ const consequence=top?{label:'03 / OBSERVED CONDITION',title:`${REGION_DEFS.find(r=>r.id===top.id).name}: ${STAT_NAMES[top.metric]} ${d>=0?'+':''}${d.toFixed(1)}`,detail:`Energy unmet: ${top.energyUnmet.toFixed(1)} · essentials unmet: ${top.goodsUnmet.toFixed(1)} units.`}
+ :{label:'03 / OBSERVED CONDITION',title:'Conditions remained stable',detail:'No significant regional shift was recorded.'};
+ return {title:`Week ${String(frame.week).padStart(2,'0')} · The ripple spreads`,week:`RESOLVED WEEK ${String(frame.week).padStart(2,'0')} / 24`,focus:top?.id||'meridian',stages:[first,network,consequence],
+   proof:'Observed events and resource flows. Their ordering does not by itself establish that one caused another.'};
+}
+function renderImpact(){
+ if(!state)return;
+ const info=impactContent();const frame=currentImpact();
+ $('impact-week').textContent=info.week;$('impact-title').textContent=info.title;
+ $('impact-chain').innerHTML=info.stages.map((stage,i)=>`<button type="button" class="impact-stage ${i===impactStage?'active':''}" data-impact-stage="${i}" aria-pressed="${i===impactStage}"><small>${stage.label}</small><strong>${stage.title}</strong><em>${stage.detail}</em></button>`).join('');
+ $('impact-replay').disabled=!frame;
+ $('impact-motion').textContent=impactMotion?'Motion on':'Motion off';$('impact-motion').setAttribute('aria-pressed',String(impactMotion));
+ $('impact-disclaimer').textContent=info.proof;
+ $('impact-target').textContent=frame?'Inspect affected region →':'Make a decision →';
+ renderImpactMap();
+}
+function renderImpactMap(){
+ const layer=$('impact-layer');if(!layer)return;const f=currentImpact();
+ if(!f){layer.innerHTML='';return;}
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const flowStage=impactStage===1;const outcomeStage=impactStage===2;
+ if(flowStage){const top=f.flows.slice(0,3);layer.innerHTML=top.map((flow,i)=>{
+   const from=REGION_DEFS.find(r=>r.id===flow.from),to=REGION_DEFS.find(r=>r.id===flow.to);
+   const cx=(from.x+to.x)/2,cy=(from.y+to.y)/2-6;
+   const d=`M${from.x} ${from.y} Q${cx} ${cy} ${to.x} ${to.y}`;
+   return `<path class="impact-flow ${flow.kind==='goods'?'goods':''} ${i?'impact-dim':''}" d="${d}"/>${impactMotion&&!reduced?`<circle class="impact-orb ${flow.kind==='goods'?'goods':''}" r="${i===0?5:3.5}"><animateMotion dur="${2.0+i*.6}s" path="${d}" repeatCount="indefinite"/></circle>`:`<circle cx="${to.x}" cy="${to.y}" r="6" fill="${flow.kind==='goods'?'#ffcf88':'#91ffe4'}"/>`}`;
+ }).join('');return;}
+ if(outcomeStage){layer.innerHTML=f.changed.slice(0,2).map((c,i)=>{
+   const r=REGION_DEFS.find(d=>d.id===c.id);const cls=c.change>0?'recovery':'';
+   return `<circle cx="${r.x}" cy="${r.y}" r="19" class="impact-halo ${cls} ${i?'two':''}" ${(!impactMotion||reduced)?'style="animation:none;opacity:.75"':''}/>`;
+ }).join('');return;}
+ layer.innerHTML=f.actions.slice(0,2).map(a=>{
+   const r=REGION_DEFS.find(d=>d.id===a.regionId);
+   return `<circle cx="${r.x}" cy="${r.y}" r="18" stroke="#a7f4de" fill="none" stroke-width="3"/>`;
+ }).join('');
+}
+function stopImpactReplay(){if(impactTimer!==null){clearTimeout(impactTimer);impactTimer=null;}}
+function setImpactStage(stage){impactStage=Math.max(0,Math.min(2,stage));renderImpact()}
+function replayImpact(){stopImpactReplay();if(!currentImpact())return;setImpactStage(0);
+ if(!impactMotion||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ let step=0;const next=()=>{if(step>=2){impactTimer=null;return;}step++;setImpactStage(step);impactTimer=setTimeout(next,1350)};
+ impactTimer=setTimeout(next,1350);
+}
+function impactToast(message){clearTimeout(feedbackTimer);const toast=$('impact-feedback');toast.textContent=message;toast.classList.add('visible');feedbackTimer=setTimeout(()=>toast.classList.remove('visible'),1900)}
+
+function forkTimeline(){stopImpactReplay();impactStage=0;if(!state||!snapshots.length)return;const target=Number($('fork-week').value);if(!Number.isFinite(target)||target<1||target>=state.week)return;
+ const found=snapshots.find(s=>s.week===target);if(!found)return;
+ formerTimeline=snapshots.map(s=>({week:s.week,score:s.score}));
+ state=copy(found.world);state.branches++;
+ snapshots=snapshots.filter(s=>s.week<=target);
+ branchWeek=target;
+ report('A new timeline forked from Week '+displayWeek(target)+'. The abandoned future is preserved for comparison.','success');
+ $('start-modal').style.display='none';render();
+}
+function forecastMetrics(world,id){
+ const r=world.regions.find(x=>x.id===id);
+ const worldScore=avg(world.regions.map(x=>.3*x.energy+.25*x.logistics+.25*x.goods+.2*x.trust));
+ const score=x=>.3*x.energy+.25*x.logistics+.25*x.goods+.2*x.trust;
+ return {stability:worldScore,regional:score(r),energyUnmet:world.cumulativeEnergyUnmet,
+    goodsUnmet:world.cumulativeGoodsUnmet,freight:world.goodsDelivered,reforms:world.regions.filter(x=>x.reformed).length,
+    trust:r.trust,capacity:r.powerCap,stock:r.goodsStock,powerStock:r.powerStock,
+    pressure:r.pressure,adapt:r.adapt,routeCapacity:world.links.filter(l=>l.a===id||l.b===id).reduce((v,l)=>v+l.capacity,0),
+    routeIntegrity:avg(world.links.filter(l=>l.a===id||l.b===id).map(l=>l.integrity)),
+    routeGoodwill:avg(world.links.filter(l=>l.a===id||l.b===id).map(l=>l.cooperation)),
+    powerLinkCapacity:world.links.filter(l=>l.a===id||l.b===id).reduce((v,l)=>v+l.powerCapacity,0),
+    regions:Object.fromEntries(world.regions.map(x=>[x.id,score(x)]))};
+}
+// A real counterfactual: same cloned state, seed and future scripted shocks; one extra action vs none.
+// No action is silently inserted into later weeks. Neither branch touches the live game.
+function compareIntervention(actionId, horizon=3){
+ const a=ACTIONS.find(x=>x.id===actionId),r=rById(state.selected);
+ if(!a||state.finished)return null;
+ const blocked=actionBlock(a,r);if(blocked)return {blocked};
+ const live=state,initial=copy(state),n=Math.min(horizon,MAX_WEEK-state.week+1);
+ const paths=[];
+ try{
+   for(const intervene of [false,true]){
+     state=copy(initial);
+     if(intervene)applyAction(actionId,true);
+     const byWeek=[];
+     for(let i=0;i<n&&!state.finished;i++){
+       tick(true);
+       byWeek.push(forecastMetrics(state,initial.selected));
+     }
+     paths.push(byWeek);
+   }
+ }finally{state=live;}
+ const diffs=paths[0].map((base,i)=>({week:i+1,base,withAction:paths[1][i]}));
+ return {actionId,horizon:n,regionId:initial.selected,diffs};
+}
+// Paired futures keep shocks consistent BETWEEN act/no-act in each sample.
+// The first sample retains the current hidden seed; other samples produce plausible alternatives.
+// Invariant: preview does not mutate state, event history, or timeline snapshots.
+function sampleIntervention(actionId,horizon=3,samples=9){
+ const a=ACTIONS.find(x=>x.id===actionId),r=rById(state.selected);
+ if(!a||state.finished)return null;
+ const blocked=actionBlock(a,r);if(blocked)return {blocked};
+ const initial=copy(state),live=state,n=Math.min(horizon,MAX_WEEK-state.week+1);
+ const fields=['regional','stability','energyUnmet','goodsUnmet','freight','reforms','trust','capacity','stock','powerStock','pressure','adapt','routeCapacity','routeIntegrity','routeGoodwill','powerLinkCapacity'];
+ const rows=Array.from({length:n},()=>[]);
+ const spillRows=Array.from({length:n},()=>[]);
+ try{
+  for(let j=0;j<samples;j++){
+   const seed=j===0?initial.seed:((initial.seed^Math.imul(j,0x9e3779b1))>>>0)||1;
+   let before=[],after=[];
+   for(const intervene of [false,true]){
+    state=copy(initial);state.seed=seed;
+    if(intervene)applyAction(actionId,true);
+    const trajectory=[];
+    for(let t=0;t<n&&!state.finished;t++){tick(true);trajectory.push(forecastMetrics(state,initial.selected))}
+    if(intervene)after=trajectory;else before=trajectory;
+   }
+   for(let t=0;t<n;t++){
+    const delta={};for(const k of fields)delta[k]=after[t][k]-before[t][k];
+    rows[t].push(delta);
+    const differences={};for(const key of Object.keys(before[t].regions)){
+      differences[key]=after[t].regions[key]-before[t].regions[key];
+    }
+    spillRows[t].push(differences);
+   }
+  }
+ }finally{state=live;}
+ const summarize=values=>{const sorted=values.slice().sort((a,b)=>a-b);const median=sorted[Math.floor(sorted.length/2)];
+  return {low:sorted[0],mid:median,high:sorted[sorted.length-1]}};
+ const diffs=rows.map((samplesForWeek,t)=>{
+  const metrics=Object.fromEntries(fields.map(k=>[k,summarize(samplesForWeek.map(item=>item[k]))]));
+  const regions=Object.fromEntries(state.regions.map(r=>[r.id,summarize(spillRows[t].map(x=>x[r.id]))]));
+  return {week:t+1,metrics,regions};
+ });
+ return {actionId,horizon:n,samples,diffs};
+}
+function metricDelta(d,key){return d.withAction[key]-d.base[key]}
+function fmtDelta(v,goodDirection=1,digits=1){
+ const rounded=Number(v.toFixed(digits));const good=rounded*goodDirection>0;
+ const bad=rounded*goodDirection<0;
+ return `<b class="${good?'good':bad?'bad':''}">${rounded>0?'+':''}${rounded.toFixed(digits)}</b>`;
+}
+function fmtRange(summary,goodDirection=1,digits=1){
+ const med=Number(summary.mid.toFixed(digits));
+ const good=med*goodDirection>0, bad=med*goodDirection<0;
+ const fmt=v=>`${v>0?'+':''}${Number(v).toFixed(digits)}`;
+ const range=summary.high-summary.low;
+ return `<b class="${good?'good':bad?'bad':''}">${fmt(med)}</b>${range>(digits===0?.5:.13)?` <small class="uncertainty-range">[${fmt(summary.low)} to ${fmt(summary.high)}]</small>`:''}`;
+}
+function renderForecast(){
+ const a=ACTIONS.find(x=>x.id===selectedAction);
+ const result=sampleIntervention(a.id,3,9);
+ if(!result){$('forecast').innerHTML='';return;}
+ if(result.blocked){$('forecast').innerHTML=`<div class="forecast"><div class="forecast-title">Causality Lens · Uncertain futures</div><p class="forecast-intro">Forecast unavailable: ${result.blocked}.</p></div>`;return;}
+ const one=result.diffs[0],last=result.diffs[result.diffs.length-1];
+ const priority={reserve:['powerStock','capacity'],repair:['capacity','powerStock'],shipments:['stock','freight'],
+    brief:['trust','adapt'],gridshare:['powerLinkCapacity','routeGoodwill'],divert:['routeCapacity','routeGoodwill'],pact:['routeGoodwill','routeIntegrity'],
+    ration:['trust','powerStock'],corridor:['routeCapacity','routeIntegrity'],
+    experiment:['pressure','adapt'],reform:['pressure','reforms'],stress:['pressure','routeIntegrity'],
+    microgrid:['capacity','powerStock']};
+ const custom={powerStock:['Battery units',1],capacity:['Generation / wk',1],stock:['Essential inventory',1],
+    freight:['Freight delivered¹',1],trust:['Target trust',1],adapt:['Target adaptation',1],
+    pressure:['Reform momentum',1],routeCapacity:['Freight capacity',1],powerLinkCapacity:['Power connector capacity',1],routeGoodwill:['Cross-border goodwill',1],routeIntegrity:['Route reliability',1],reforms:['Reforms',1]};
+ const labels=[['regional','Target stability',1],['stability','World stability',1],
+    ['energyUnmet','World power unmet¹',-1],['goodsUnmet','World goods unmet¹',-1],
+    ...(priority[a.id]||[]).map(k=>[k,custom[k][0],custom[k][1]])];
+ const renderColumn=(d,title)=>`<div class="forecast-col"><header>${title}</header>${labels.map(([key,label,good])=>
+  `<div class="forecast-row"><span>${label}</span><span class="forecast-values">${fmtRange(d.metrics[key],good,key==='reforms'?0:1)}</span></div>`).join('')}</div>`;
+ const other=state.regions.filter(r=>r.id!==state.selected).map(r=>({name:r.name,d:last.regions[r.id]})).filter(x=>Math.abs(x.d.mid)>=.07||x.d.high-x.d.low>.3).sort((a,b)=>Math.max(Math.abs(b.d.mid),b.d.high-b.d.low)-Math.max(Math.abs(a.d.mid),a.d.high-a.d.low)).slice(0,3);
+ const spill=other.length?other.map(x=>`${x.name} ${fmtRange(x.d)}`).join(' · '):'No major neighboring changes in sampled outcomes.';
+ const bands=labels.filter(([key])=>last.metrics[key].high-last.metrics[key].low>.2).length;
+ $('forecast').innerHTML=`<div class="forecast"><div class="forecast-title">◈ Causality Lens · Nine possible futures</div>
+  <p class="forecast-intro">Compares <strong>act now</strong> with <strong>wait</strong> under ${result.samples} matched world futures. Values are median changes. Brackets show full sampled ranges.</p>
+  <div class="forecast-compare">${renderColumn(one,'After 1 week')}${renderColumn(last,`After ${result.horizon} weeks`)}</div>
+  <div class="spillovers"><strong>Regional spillovers:</strong> ${spill}</div>
+  <div class="forecast-note">¹ Difference in cumulative totals. Less unmet demand is better. Forecasts include random disruptions and independent council decisions. ${bands?'Different events can change the outcome.':'These sampled scenarios happen to agree on the displayed changes.'} Ranges are not guarantees or statistical confidence intervals. These projections assume you make no further interventions.</div></div>`;
+}
+function traceRow(n,heading,desc,isAlert=false){return `<div class="trace-line ${isAlert?'alert':''}"><span class="trace-step">${n}</span><div><strong>${heading}</strong><p>${desc}</p></div></div>`}
+function provenanceButtons(list,unit){return list.length?list.map(x=>`<button class="provenance-button" data-upstream="${x.id}" title="Inspect source">${rById(x.id).name} (${fixed(x.qty)} ${unit})</button>`).join(' · '):'None';}
+function renderLens(){
+ const r=rById(state.selected),t=r.trace;
+ $('lens-energy').classList.toggle('active',lensFocus==='energy');$('lens-goods').classList.toggle('active',lensFocus==='goods');
+ $('lens-energy').setAttribute('aria-pressed',String(lensFocus==='energy'));$('lens-goods').setAttribute('aria-pressed',String(lensFocus==='goods'));
+ if(!t){$('lens-trace').innerHTML='<p class="trace-intro">Advance the first week to reveal measured supply routes, shortages and causes. Forecasts are already available in Strategic Control.</p>';return;}
+ let rows=[];
+ if(lensFocus==='energy'){
+   rows=[traceRow('1','Energy required: '+fixed(t.energyDemand),`Regional electricity demand reflects local needs, winter pressure and temporary rationing.`),
+     traceRow('2','Local generation: '+fixed(t.energyGeneration),`Production capacity ${fixed(r.powerCap)}. Grid upkeep cost ${fixed(t.maintenance||0)} essentials this week. ${t.energyGeneration<r.powerCap-1?'Emergency grid restrictions reduced power this week.':'Available production reflects this week’s grid conditions.'}`,t.energyDemand>t.energyGeneration),
+     traceRow('3','Imported: '+fixed(r.powerImports),`Direct physical sources: ${provenanceButtons(t.energyFrom,'power')}. Transfer connections lose 10% of power sent.`),
+     traceRow('4','Batteries used: '+fixed(t.batteryUsed),`Opening battery reserve ${fixed(t.openingPower)}; end-of-week reserve ${fixed(r.powerStock)}.`),
+     traceRow('5','Unmet energy: '+fixed(r.lastEnergyUnmet),`Served ${Math.round(r.energyServed*100)}% of demand. ${r.lastEnergyUnmet>.01?'Power shortages can reduce local essentials production and erode public trust.':'This region avoided a measurable power shortfall.'}`,r.lastEnergyUnmet>.01)];
+ }else{
+   const input=t.goodsFrom.reduce((v,x)=>v+x.qty,0),output=t.goodsTo.reduce((v,x)=>v+x.qty,0);
+   const penalized=Math.max(0,t.idealProduced-t.produced);
+   const pending=state.transit.filter(s=>s.to===r.id).reduce((v,s)=>v+s.qty,0);
+   rows=[traceRow('1','Opening stock: '+fixed(t.openingGoods),`Inventory inherited from the previous week, before this week’s shipments arrived.`),
+     traceRow('2','Freight received: '+fixed(input),`Arrivals dispatched last week from: ${provenanceButtons(t.goodsFrom,'goods')}. Freight cannot teleport between regions.`),
+     traceRow('3','Local production: '+fixed(t.produced),`Grid reliability reduced potential production by ${fixed(penalized)} units this week. This links electricity shortages to essentials.`,penalized>.05),
+     traceRow('4','Essential consumption: '+fixed(t.goodsConsumed),`Regional demand ${fixed(t.foodDemand)}. Infrastructure upkeep consumed ${fixed(t.maintenance||0)} essential units. ${fixed(output)} further units departed for neighboring regions; ${fixed(pending)} are inbound next week.`),
+     traceRow('5','Unmet essentials: '+fixed(r.lastGoodsUnmet),`Current inventory ${fixed(r.goodsStock)}. ${r.lastGoodsUnmet>.01?'Food and goods shortages may erode trust and add reform pressure.':'Current local demand was fully supplied.'}`,r.lastGoodsUnmet>.01)];
+ }
+ $('lens-trace').innerHTML=`<p class="trace-intro"><b>${r.name}</b> · Week ${displayWeek(t.week)} observed resource path. Tap a named supplier to trace upstream. Brightened links connect this region to measured providers.</p>${rows.join('')}`;
+}
+function colorFor(r){const minimum=Math.min(...STAT_KEYS.map(k=>r[k]));return minimum<32?'#ff7785':minimum<49?'#eac17c':'#78e2cf'}
+function regionInsight(r){let key=STAT_KEYS.reduce((a,b)=>r[a]<r[b]?a:b);let description=`Most fragile system: ${STAT_NAMES[key].toLowerCase()} (${round(r[key])}/100).`;
+ if(r.reformed)description+=' Institutional transition completed.';
+ else if(r.pressure>35)description+=' Reform pressure is accumulating.'+(toolVariety(r)<2?' Transition needs support from a second kind of policy.':' A two-policy coalition is ready.');
+ return description}
+function renderMap(){
+ let done=new Set();let edges='';
+ for(const r of state.regions)for(const id of r.neighbors){const n=rById(id);let pair=[r.id,id].sort().join(':');if(done.has(pair))continue;done.add(pair);
+ const weak=Math.min(...STAT_KEYS.map(k=>Math.min(r[k],n[k])));
+ const route=state.links.find(l=>l.id===pair);const integrity=route?route.integrity:75;const color=integrity<50?'#f18184':integrity<70?'#d9a865':'#60b2c0';
+ const lx=(r.x+n.x)/2, ly=(r.y+n.y)/2-6;
+ const selected=rById(state.selected),activeTrace=selected.trace;
+ const providers=activeTrace?(lensFocus==='energy'?activeTrace.energyFrom:activeTrace.goodsFrom).map(t=>t.id):[];
+ const inspected=(r.id===state.selected&&providers.includes(n.id))||(n.id===state.selected&&providers.includes(r.id));
+ edges+=`<path class="link ${integrity<65?'hot':''} ${inspected?'inspected':''}" d="M${r.x} ${r.y} Q${lx} ${ly} ${n.x} ${n.y}" stroke="${color}"/>`;
+ }
+ $('link-layer').innerHTML=edges;
+ $('node-layer').innerHTML=state.regions.map((r,i)=>{
+ const color=colorFor(r),active=r.id===state.selected;
+ const labelY=r.y>355?r.y-25:r.y+40;
+ return `<g class="node ${active?'active':''}" data-region="${r.id}" role="button" tabindex="0" aria-label="Select ${r.name}"><circle class="halo" cx="${r.x}" cy="${r.y}" r="26" fill="${color}"/><circle class="outer" cx="${r.x}" cy="${r.y}" r="${active?13:10}" stroke="${color}"/><circle class="inner" cx="${r.x}" cy="${r.y}" r="${active?5:3.5}" fill="${color}"/><text class="node-index" x="${r.x+16}" y="${r.y-9}">${String(i+1).padStart(2,'0')}</text><text class="node-label" text-anchor="middle" x="${r.x}" y="${labelY}">${r.name}</text><circle cx="${r.x}" cy="${r.y}" r="24" fill="transparent"/></g>`;
+ }).join('');
+ renderImpactMap();
+}
+function renderRegion(){const r=rById(state.selected);$('region-picker').value=r.id;$('region-name').textContent=r.name;$('region-desc').textContent=r.desc;$('region-insight').textContent=regionInsight(r);
+ $('region-tags').innerHTML=`<span class="tag">${r.archetype}</span><span class="tag">Adaptation ${round(r.adapt)}</span><span class="tag">Council actions ${r.councilActions}</span>${r.tradeRestriction>0?'<span class="tag">Export safeguards</span>':''}${r.gridProjects?'<span class="tag">Grid rebuilds '+r.gridProjects+'</span>':''}<span class="tag">Policy diversity ${Math.min(2,toolVariety(r))}/2</span>${r.corridorProjects?'<span class="tag">Protected corridor ✓</span>':''}${r.reformed?'<span class="tag">Reformed ✓</span>':''}`;
+ $('region-metrics').innerHTML=STAT_KEYS.map(k=>`<div class="metric"><div class="metric-header"><span>${STAT_NAMES[k]}</span><strong>${round(r[k])}</strong></div><div class="track"><div class="fill" style="width:${r[k]}%;background:${STAT_COLORS[k]}"></div></div></div>`).join('');
+ const links=adjacentLinks(r.id),avgRoute=avg(links.map(l=>l.integrity)),avgGoodwill=avg(links.map(l=>l.cooperation));
+ const cell=(label,amount,extra)=>`<div class="flow-cell"><div class="flow-label">${label}</div><strong>${amount}</strong><small>${extra}</small></div>`;
+ $('flow-intel').innerHTML=`<div class="flow-title">Physical flows · last resolved week</div><div class="flow-grid">${cell('Energy generation',fixed(r.powerCap)+'/wk','Demand '+fixed(r.actualPowerNeed||r.powerNeed)+'/wk')}${cell('Battery reserve',fixed(r.powerStock),'Capacity '+fixed(r.powerMax))}${cell('Essential inventory',fixed(r.goodsStock),'Production '+fixed(r.goodsOutput)+'/wk')}${cell('Trade goodwill',round(avgGoodwill)+'%','Route health '+round(avgRoute)+'%')}</div><div class="flow-note">Electricity imported: ${fixed(r.powerImports)} · exported: ${fixed(r.powerExports)}. Unmet last week: ${fixed(r.lastEnergyUnmet)} energy / ${fixed(r.lastGoodsUnmet)} essentials. ${r.rationRemain?'Rationing active for '+r.rationRemain+' more week(s).':''}</div><div class="trade-alert"><strong>Strategic pressure:</strong> ${state.projects.filter(p=>p.id===r.id).length?state.projects.filter(p=>p.id===r.id).length+' local project(s) under construction. ':''}Infrastructure upkeep ${fixed(r.gridProjects*.35+r.microgridProjects*.2+r.corridorProjects*.25)} essentials/week; paid ${fixed(r.lastMaintenance)} last tick. ${avgGoodwill<62?'Low cross-border goodwill restricts both power and freight.':'Mutual trust helps electricity and shipments reach this region.'}</div><div class="legend-mini">All quantities are fictional simulation units. Freight takes one week to arrive; power transfers are same-week.</div>`;
+}
+function renderDirective(){const m=MANDATE_TEXT[state.mandate];$('objective-heading').textContent=m.headline;$('objective-value').textContent=m.subtitle;$('objective-desc').textContent=m.summary;
+ $('objective-steps').innerHTML=goals().map(g=>`<div class="goal-row ${g.ok?'good':'warn'}"><span>${g.title}</span><span>${g.value} ${g.ok?'✓':'○'}</span></div>`).join('');
+ $('world-flow').innerHTML=`<div><strong>${fixed(state.weekly.energyUnmet)} units</strong><span>Last week's energy shortage</span></div><div><strong>${fixed(state.weekly.goodsUnmet)} units</strong><span>Last week's essentials shortage</span></div><div><strong>${fixed(state.goodsDelivered)} units</strong><span>Freight received over the run</span></div><div><strong>${fixed(state.centralPower)} / ${fixed(state.centralGoods)}</strong><span>Directorate power / goods reserves · crews free ${state.constructionCrews-state.projects.length}/${state.constructionCrews}</span></div>`;
+}
+function renderActions(){
+ document.querySelectorAll('.tab').forEach(el=>{const on=el.dataset.tab===activeTab;el.classList.toggle('active',on);el.setAttribute('aria-selected',String(on))});
+ const choices=ACTIONS.filter(a=>a.type===activeTab);
+ if(!choices.find(a=>a.id===selectedAction))selectedAction=choices[0].id;
+ $('action-list').innerHTML=choices.map(a=>`<button class="action-item ${selectedAction===a.id?'selected':''}" data-action="${a.id}" aria-pressed="${String(selectedAction===a.id)}" title="${actionBlock(a,rById(state.selected))||'Available'}"><div class="action-top"><span>${a.name}</span><span class="cost">◆ ${a.cost}</span></div><div class="description">${a.desc}</div></button>`).join('');
+ $('action-picker').innerHTML=choices.map(a=>`<option value="${a.id}">${a.name} · ◆${a.cost}</option>`).join('');
+ $('action-picker').value=selectedAction;
+ const a=ACTIONS.find(a=>a.id===selectedAction);
+ const r=rById(state.selected);
+ const blocked=actionBlock(a,r);const disabled=Boolean(blocked);
+ const failReason=blocked||`Apply to ${r.name}`;
+ $('action-preview').innerHTML=`<div class="preview-head"><span class="preview-title">${a.name}</span><span class="cost">${a.cost} influence</span></div><div class="impact">${a.preview.split(' · ').map(s=>`<span>${s.replaceAll('+','<span class="plus">+</span>').replaceAll('−','<span class="minus">−</span>')}</span>`).join('')}</div><p class="mobile-action-desc">${a.desc}</p><div class="hint">Construction queues, scarce regional materials and relationship-sensitive routes make each investment a tradeoff. Forecasts include these costs.</div>${blocked?`<div class="action-warning">${blocked}</div>`:''}<button class="execute" id="execute-btn" ${disabled?'disabled':''}>${failReason} →</button>`;
+ $('execute-btn').addEventListener('click',()=>applyAction(a.id));
+ renderForecast();
+ $('advance-btn').disabled=state.finished;
+ $('advance-btn').innerHTML=`<span>${state.finished?'Simulation complete':'Resolve Week '+displayWeek(state.week)}</span><span>→</span>`;
+}
+function renderTimeline(){
+ const min=20,max=90;
+ const points=snapshots.map(s=>({x:16+(s.week-1)/24*726,y:91-(clamp(s.score,min,max)-min)/(max-min)*77,score:s.score,week:s.week}));
+ const line=(arr)=>arr.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+ const old=formerTimeline?formerTimeline.map(s=>({x:16+(s.week-1)/24*726,y:91-(clamp(s.score,min,max)-min)/(max-min)*77})):[];
+ let h='';
+ for(const value of [30,50,70,90]){const y=91-(value-min)/(max-min)*77;h+=`<line x1="10" y1="${y}" x2="750" y2="${y}" stroke="#3b5363" opacity=".55" stroke-dasharray="3 7"/><text x="11" y="${y-4}" font-size="10" fill="#7390a4">${value}</text>`}
+ if(old.length)h+=`<path d="${line(old)}" fill="none" stroke="#d7a26e" stroke-width="2" opacity=".7" stroke-dasharray="5 7"/>`;
+ if(points.length)h+=`<path d="${line(points)}" fill="none" stroke="#7de2d0" stroke-width="3.5"/><circle cx="${points[points.length-1].x}" cy="${points[points.length-1].y}" r="5" fill="#9afbe8"/>`;
+ h+='<text x="17" y="102" font-size="10" fill="#7892a3">W1</text><text x="720" y="102" font-size="10" fill="#7892a3">W24</text>';
+ $('spark-layer').innerHTML=h;
+ $('world-score').textContent=`${round(stability())} / 100`;
+ const oldValue=Number($('fork-week').value)||branchWeek;
+ const options=snapshots.filter(s=>s.week<state.week&&s.week<=MAX_WEEK);
+ $('fork-week').innerHTML=options.map(s=>`<option value="${s.week}" ${s.week===oldValue?'selected':''}>Week ${displayWeek(s.week)}</option>`).join('');
+ if(options.length){const chosen=options.find(s=>s.week===oldValue)||options[Math.max(0,options.length-1)];$('fork-week').value=String(chosen.week);branchWeek=chosen.week}
+ $('fork-btn').disabled=options.length===0;
+ $('fork-note').textContent=formerTimeline?'Dotted line = abandoned future. You can fork again.':'Choose a saved week to change the future.';
+}
+function renderFeed(){$('event-feed').innerHTML=state.events.slice(-9).reverse().map(e=>`<div class="feed-item ${e.kind}"><strong>W${displayWeek(e.week)} · ${e.kind.toUpperCase()}</strong>${e.text}</div>`).join('')}
+function render(){if(!state)return;
+ $('week-label').textContent=state.finished?'24 / 24':`${displayWeek(state.week)} / 24`;
+ $('mandate-label').textContent=state.mandate;
+ $('influence-label').textContent=state.influence;
+ $('actions-label').textContent=state.finished?'Finished':`${state.ap} left`;
+ renderMap();renderImpact();renderRegion();renderDirective();renderActions();renderLens();renderTimeline();renderFeed();renderPulse();renderDebrief();renderTour();renderCommand();renderCheckpoint();saveProgress();
+}
+function showEnd(){const passed=goals().filter(g=>g.ok).length;const win=passed===3;const score=round(stability());const reform=countReforms();
+ $('modal-eyebrow').textContent='Archive entry / 24 weeks complete';
+ $('modal-title').textContent=win?'Mission accomplished.':'The world has changed.';
+ $('modal-copy').textContent=win?'Your strategic interventions met every mandate requirement. Explore the timeline or try a radically different path.':`You met ${passed} of 3 mandate objectives. Aster continues beyond this chapter—and a different choice earlier in the timeline may change everything.`;
+ $('modal-body').innerHTML=`<div class="mode-result" style="color:${win?'var(--accent)':'var(--gold)'}">${win?'DIRECTIVE COMPLETE':'PARTIAL DIRECTIVE'}</div><div class="modal-stat"><div><b>${score}</b><small>World stability</small></div><div><b>${reform}</b><small>Reformed regions</small></div><div><b>${state.actionsUsed}</b><small>Interventions</small></div></div><div class="world-flow"><div><strong>${round(state.cumulativeEnergyUnmet)}</strong><span>Unmet electricity (24 weeks)</span></div><div><strong>${round(state.cumulativeGoodsUnmet)}</strong><span>Unmet essentials (24 weeks)</span></div><div><strong>${round(state.goodsDelivered)}</strong><span>Freight units delivered</span></div><div><strong>${round(state.powerTraded)}</strong><span>Electricity units traded</span></div></div><div class="objective-steps">${goals().map(g=>`<div class="goal-row ${g.ok?'good':'warn'}"><span>${g.title}</span><span>${g.value} ${g.ok?'✓':'○'}</span></div>`).join('')}</div><p class="label-sm">Branching from an earlier week restores your position. Each playthrough keeps the same underlying simulation rules.</p>`;
+ $('modal-footnote').textContent='The debrief below ranks turning points and compares modeled choices.';
+ $('start-btn').textContent='Read world debrief →';
+ $('start-btn').onclick=()=>{$('start-modal').style.display='none';$('world-debrief').scrollIntoView({block:'start',behavior:'smooth'})};
+ $('start-modal').style.display='grid';
+}
+function newRun(){finishTour();chosenMandate='Guardian';$('modal-eyebrow').textContent='Continuity Directorate · Briefing 001';$('modal-title').textContent='One world. Three ways to shape it.';$('modal-copy').textContent='A severe winter threatens twelve interconnected regions. Choose whether to prevent, redirect, or transform the crisis.';
+ $('modal-body').innerHTML=`<div class="briefing-scene" aria-label="Mission alert"><div class="brief-icon" aria-hidden="true">⚡</div><div class="brief-copy"><span class="brief-tag">NETWORK WARNING / BLACKOUT WINTER</span><strong>One weak grid. Twelve connected regions.</strong><small>North Meridian starts at just 44/100 energy reliability. One decision could affect the entire network.</small></div></div><div class="mandate-grid" id="mandate-options"><button class="mandate-card active" data-mandate="Guardian"><strong>◈ Guardian</strong><small>Keep the world stable. Protect essential services and public trust.</small></button><button class="mandate-card" data-mandate="Broker"><strong>⇄ Broker</strong><small>Defend critical trading hubs by moving pressure elsewhere.</small></button><button class="mandate-card" data-mandate="Catalyst"><strong>✧ Catalyst</strong><small>Drive institutional transitions without destroying resilience.</small></button></div><p class="label-sm">24 turns · 12 regions · playable offline after first visit</p>`;
+ $('modal-body').insertAdjacentHTML('beforeend','<label class="guide-choice"><input id="guided-start" type="checkbox" checked>Play a guided first crisis (recommended)</label>');
+ $('modal-body').insertAdjacentHTML('beforeend','<p class="label-sm">Alpha note: progress is saved on this device, without an account or analytics. Clearing site data erases your save.</p>');
+ $('modal-footnote').textContent='Choose a mandate. You can skip the optional guide at any time.';
+ $('start-btn').textContent='Enter the world →';
+ $('start-btn').onclick=()=>{const guided=$('guided-start')?.checked!==false;startGame(chosenMandate);if(guided)beginTour();};
+ $('start-modal').style.display='grid';
+}
+// Event delegation ensures dynamically created map nodes and action cards work.
+$('node-layer').addEventListener('click',e=>{const node=e.target.closest('[data-region]');if(node)selectRegion(node.dataset.region)});
+$('node-layer').addEventListener('keydown',e=>{const node=e.target.closest('[data-region]');if(node&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectRegion(node.dataset.region)}});
+$('action-list').addEventListener('click',e=>{const a=e.target.closest('[data-action]');if(a){selectedAction=a.dataset.action;if(tourActive&&tourStep===2)advanceTour();renderActions()}});
+$('region-picker').addEventListener('change',e=>selectRegion(e.target.value));
+$('action-picker').addEventListener('change',e=>{selectedAction=e.target.value;if(tourActive&&tourStep===2)advanceTour();renderActions()});
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{activeTab=t.dataset.tab;selectedAction=ACTIONS.find(a=>a.type===activeTab).id;if(tourActive&&tourStep===2)advanceTour();renderActions()}));
+$('advance-btn').addEventListener('click',()=>{tick();if(state&&!state.finished)impactToast('Week resolved · explore the three-stage ripple above the map');});
+$('impact-chain').addEventListener('click',e=>{const stage=e.target.closest('[data-impact-stage]');if(stage){stopImpactReplay();setImpactStage(Number(stage.dataset.impactStage));}});
+$('impact-replay').addEventListener('click',replayImpact);
+$('impact-motion').addEventListener('click',()=>{impactMotion=!impactMotion;stopImpactReplay();renderImpact();});
+$('impact-target').addEventListener('click',()=>{const f=currentImpact();if(!f){$('control-panel').scrollIntoView({block:'start',behavior:'smooth'});return;}const info=impactContent();selectRegion(info.focus);setWorldView('world');$('region-name').scrollIntoView({block:'center',behavior:'smooth'});});
+$('lens-energy').addEventListener('click',()=>{lensFocus='energy';if(tourActive&&tourStep===1)advanceTour();renderLens();});
+$('lens-goods').addEventListener('click',()=>{lensFocus='goods';if(tourActive&&tourStep===1)advanceTour();renderLens();});
+$('lens-trace').addEventListener('click',e=>{const n=e.target.closest('[data-upstream]');if(n)selectRegion(n.dataset.upstream);});
+$('restart-btn').addEventListener('click',newRun);
+$('fork-btn').addEventListener('click',forkTimeline);
+$('fork-week').addEventListener('change',e=>{branchWeek=Number(e.target.value)});
+// delegated, because the briefing cards are rebuilt when starting a new run.
+document.querySelector('.modal').addEventListener('click',e=>{const c=e.target.closest('[data-mandate]');if(!c)return;chosenMandate=c.dataset.mandate;document.querySelectorAll('.mandate-card').forEach(b=>b.classList.toggle('active',b.dataset.mandate===chosenMandate))});
+
+// v0.8 first-run mission. Steps require player actions, not passive dismissal.
+const TOUR_STEPS=[
+ {title:'Find the pressure point',desc:'Select a DIFFERENT region using the target-region selector or any map node. Compare its strengths and vulnerabilities.',target:'region-picker'},
+ {title:'Trace a shortage',desc:'In the Causality Lens, switch between electricity and essentials. Notice that neighbors and stocks affect the outcome.',target:'lens-panel'},
+ {title:'Choose a response',desc:'Change the proposed intervention with an action card, the mobile selector, or one of the three action categories.',target:'action-picker'},
+ {title:'Commit your intervention',desc:'Read the three-week forecast, then press Apply intervention. If blocked, try another action or target. Your influence is limited.',target:'execute-btn'},
+ {title:'Advance the world',desc:'Resolve the week and observe the Live Network Readout. The region councils will also take independent actions.',target:'advance-btn'},
+ {title:'Read the consequences',desc:'You made a choice, watched the network respond, and can now trace where a shortage arose. Continue independently or rewind later.',target:'world-pulse'}
+];
+function beginTour(){tourActive=true;tourStep=0;renderTour()}
+function advanceTour(){if(!tourActive)return;tourStep=Math.min(tourStep+1,5);if(tourStep===1)setWorldView('causes');if(tourStep===2)setWorldView('world');renderTour()}
+function finishTour(){tourActive=false;tourStep=0;renderTour()}
+function renderTour(){const coach=$('tour-coach');if(!coach)return;coach.classList.toggle('visible',tourActive);document.querySelectorAll('.tour-spotlight').forEach(n=>n.classList.remove('tour-spotlight'));if(!tourActive)return;
+ const step=TOUR_STEPS[tourStep];$('tour-label').textContent=step.title;$('tour-progress').textContent=`${tourStep+1} / 6`;$('tour-message').textContent=step.desc;
+ $('tour-skip').textContent=tourStep===5?'Finish guide':'Skip guide';$('tour-jump').textContent=tourStep===5?'Inspect network →':'Show me where →';
+ const target=$(step.target);if(target&&tourStep!==5)target.classList.add('tour-spotlight');
+}
+function renderPulse(){if(!state)return;
+ const latest=state.weekHistory.at(-1);let inspected=state.selected;
+ if(!latest){$('pulse-title').textContent='A world on the edge of winter';$('pulse-desc').textContent='Supply and demand connect twelve regions. Inspect an intervention, then resolve Week 01 to watch a chain reaction.';
+   $('pulse-proof').textContent='No resolved resource flows yet; the Causality Lens shows current vulnerabilities.';
+ }else{
+   const strained=(latest.energyUnmet+latest.goodsUnmet)>.5;
+   const r=strained?rById(latest.regionId):state.regions.slice().sort((a,b)=>(b.powerImports+b.freightImports+b.powerExports+b.freightExports)-(a.powerImports+a.freightImports+a.powerExports+a.freightExports))[0];
+   inspected=r.id;
+   const short=latest.regionEnergy>=latest.regionGoods?'electricity':'essential goods';
+   const origin=r.trace&&((short==='electricity'?r.trace.energyFrom:r.trace.goodsFrom)||[]);
+   const supplier=origin&&origin.length?origin.slice().sort((a,b)=>b.qty-a.qty)[0]:null;
+   const unit=short==='electricity'?latest.regionEnergy:latest.regionGoods;
+   if(strained){
+     $('pulse-title').textContent=`Week ${displayWeek(latest.week)} · ${r.name}: ${fixed(unit)} unmet ${short} units`;
+     $('pulse-desc').textContent=`Global stability ${latest.change>=0?'+':''}${latest.change.toFixed(1)} this week. Electricity shortage ${fixed(latest.energyUnmet)}; essentials shortage ${fixed(latest.goodsUnmet)}.`;
+     $('pulse-proof').textContent=supplier?`${rById(supplier.id).name} supplied ${fixed(supplier.qty)} units to ${r.name}, but some demand remained unmet.`:
+       `${r.name} received no ${short==='electricity'?'cross-border electricity':'arriving freight'} this week. Local production and reserves could not cover demand.`;
+   }else{
+     $('pulse-title').textContent=`Week ${displayWeek(latest.week)} · Networks hold, for now`;
+     $('pulse-desc').textContent=`Shortages remain limited; ${fixed(state.weekly.powerTraded)} power units crossed regional connectors and ${fixed(state.weekly.goodsDelivered)} essentials arrived. Global stability ${signed(latest.change)}.`;
+     $('pulse-proof').textContent=`${r.name} participated in ${fixed(r.powerImports+r.powerExports)} power transfers and ${fixed(r.freightImports+r.freightExports)} freight transfers. Future shocks may still strain these routes.`;
+   }
+ }
+ $('pulse-inspect').dataset.targetRegion=inspected;
+}
+function signed(n){return (n>0?'+':'')+n.toFixed(1)}
+function renderDebrief(){const section=$('world-debrief');if(!state||!state.finished){section.classList.remove('visible');return;}
+ section.classList.add('visible');const hist=state.weekHistory;
+ const passed=goals().filter(g=>g.ok).length,win=passed===3;
+ $('debrief-heading').textContent=win?'Directive complete — but at what cost?':'A world altered — what went wrong?';
+ $('debrief-intro').textContent=`${state.mandate} mandate · ${passed} of 3 goals achieved · ${hist.length} weeks resolved. The Archive separates measured changes from counterfactual estimates.`;
+ const weakest=hist.reduce((a,b)=>a.stability<b.stability?a:b), worstSupply=hist.reduce((a,b)=>(a.energyUnmet+a.goodsUnmet)>(b.energyUnmet+b.goodsUnmet)?a:b);
+ const stats=[[''+Math.round(stability()),'Ending stability / 100'],[`${signed(stability()-avg(REGION_DEFS.map(r=>.3*r.energy+.25*r.logistics+.25*r.goods+.2*r.trust)))}`,'Change since start'],[String(state.actionsUsed),'Player interventions'],[`${fixed(state.cumulativeEnergyUnmet+state.cumulativeGoodsUnmet)}`,'Total unmet demand']];
+ $('debrief-stats').innerHTML=stats.map(([v,n])=>`<div class="debrief-stat"><strong>${v}</strong><span>${n}</span></div>`).join('');
+ const greatestDrop=hist.reduce((a,b)=>a.change<b.change?a:b),bestRecovery=hist.reduce((a,b)=>a.change>b.change?a:b);
+ const turns=[['Sharpest stability decline',greatestDrop],['Strongest stability recovery',bestRecovery],['Lowest world stability',weakest],['Largest combined shortage',worstSupply]];
+ $('debrief-turns').innerHTML=turns.map(([label,t])=>{const acts=state.actionHistory.filter(a=>a.week===t.week);
+ return `<div class="turning"><strong>${label} · Week ${displayWeek(t.week)}</strong><p>Stability ${t.stability.toFixed(1)} (${signed(t.change)} this week). Network pressure centered on ${t.regionName}; ${fixed(t.energyUnmet+t.goodsUnmet)} unmet global units. ${acts.length?acts.map(a=>a.name+' in '+a.regionName).join(' · '):'No player intervention recorded this week.'}</p><button data-review-region="${t.regionId}">Inspect current ${t.regionName} →</button></div>`;}).join('');
+ // This statistic is calculated prospectively when the action was made, and not from subsequent observed co-movements.
+ const ranked=state.actionHistory.slice().sort((a,b)=>(Math.abs(b.stability)*3+Math.abs(b.energyAvoided)*.12+Math.abs(b.goodsAvoided)*.12)-(Math.abs(a.stability)*3+Math.abs(a.energyAvoided)*.12+Math.abs(a.goodsAvoided)*.12)).slice(0,4);
+ $('debrief-decisions').innerHTML=ranked.length?ranked.map(a=>`<div class="turning"><strong>Week ${displayWeek(a.week)} · ${a.name}</strong><p>${a.regionName} · ${a.cost} Influence · paired model forecast over ${a.horizon} weeks</p><p class="decision-impact">World stability ${signed(a.stability)} · Power unmet ${signed(-a.energyAvoided)} · Goods unmet ${signed(-a.goodsAvoided)}</p><button data-review-region="${a.regionId}">Inspect current region →</button></div>`).join(''):'<div class="turning"><strong>No interventions recorded</strong><p>Complete a run using some interventions to see paired model estimates here.</p></div>';
+}
+
+// v1.0: present the real simulation in a shorter, touch-first decision loop.
+let dismissedCheckpoint=false;
+let activeWorldView='world';
+function setWorldView(v, jump=false){
+ if(!['world','causes','history'].includes(v))return;
+ activeWorldView=v;
+ const left=document.querySelector('.left');left.dataset.view=v;
+ document.querySelectorAll('.view-btn').forEach(b=>{const on=b.dataset.view===v;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
+ if(jump)document.querySelector('.world-views').scrollIntoView({block:'start',behavior:'smooth'});
+}
+function renderCommand(){
+ if(!state)return;
+ const r=rById(state.selected);const weakest=STAT_KEYS.reduce((a,b)=>r[a]<r[b]?a:b);
+ const selected=ACTIONS.find(a=>a.id===selectedAction);
+ const blocked=selected?actionBlock(selected,r):'Choose an intervention';
+ $('decision-step').textContent=`${displayWeek(Math.min(state.week,24))} / 24`;
+ $('command-summary').textContent=state.finished?'Chapter complete. Read your world debrief.':`${r.name} needs attention: ${STAT_NAMES[weakest].toLowerCase()} ${round(r[weakest])}/100.`;
+ $('command-context').textContent=state.finished?'Rewind the timeline or begin a new run.':blocked?`${selected?selected.name:'Selected action'} unavailable: ${blocked}. Choose a different intervention or target.`:`${selected.name} costs ${selected.cost} Influence. Preview the tradeoffs, then apply it—or save your resources for next week.`;
+ $('sticky-week').textContent=state.finished?'RUN COMPLETE':`WEEK ${displayWeek(state.week)} / 24`;
+ $('sticky-status').textContent=state.finished?'See the debrief':`${state.influence} Influence · ${state.ap} moves left`;
+ $('sticky-apply').disabled=Boolean(blocked)||state.finished;
+ $('sticky-next').disabled=state.finished;
+ const isMobile=window.matchMedia('(max-width: 760px)').matches;
+ $('sticky-step').style.visibility=(state.finished||!isMobile)?'hidden':'visible';
+}
+function renderCheckpoint(){
+ const box=$('chapter-check');
+ if(!state||state.week<5||dismissedCheckpoint){box.classList.remove('visible');return;}
+ // Checkpoint is an informative beat, not a new objective or artificial reward.
+ if(state.week>=9){box.classList.remove('visible');return;}
+ const base=snapshots[0]?.score??stability();
+ const change=stability()-base;
+ $('chapter-title').textContent='FIRST WINTER CHECKPOINT · WEEK 04';
+ $('chapter-desc').textContent=`The world is ${change>=0?'more stable':'less stable'} than at the start (${change>=0?'+':''}${change.toFixed(1)} points). ${state.actionsUsed} interventions recorded. Your choices will keep unfolding.`;
+ box.classList.add('visible');
+}
+$('chapter-dismiss').addEventListener('click',()=>{dismissedCheckpoint=true;renderCheckpoint()});
+$('sticky-apply').addEventListener('click',()=>{const apply=$('execute-btn');if(apply&&!apply.disabled)apply.click()});
+$('sticky-next').addEventListener('click',()=>{if(state&&!state.finished)$('advance-btn').click()});
+document.querySelectorAll('.view-btn').forEach(b=>b.addEventListener('click',()=>setWorldView(b.dataset.view)));
+
+$('tour-skip').addEventListener('click',finishTour);
+$('tour-jump').addEventListener('click',()=>{if(tourStep===5){$('world-pulse').scrollIntoView({block:'center',behavior:'smooth'});finishTour();return;}if(tourStep===1)setWorldView('causes');if(tourStep===0)setWorldView('world');const el=$(TOUR_STEPS[tourStep].target);if(!el)return;
+ // Desktop has action cards rather than a visible mobile picker.
+ let target=el;if(tourStep===0&&getComputedStyle(el).display==='none')target=$('node-layer');
+ if(tourStep===2&&getComputedStyle(el).display==='none')target=$('action-list');
+ target.scrollIntoView({block:'center',behavior:'smooth'});
+});
+$('pulse-inspect').addEventListener('click',()=>{selectRegion($('pulse-inspect').dataset.targetRegion);$('lens-panel').scrollIntoView({block:'center',behavior:'smooth'})});
+$('world-debrief').addEventListener('click',e=>{const button=e.target.closest('[data-review-region]');if(button){selectRegion(button.dataset.reviewRegion);setWorldView('causes');$('lens-panel').scrollIntoView({block:'center',behavior:'smooth'});}});
+$('debrief-new').addEventListener('click',newRun);
+
+$('start-btn').onclick=()=>{startGame(chosenMandate);beginTour()};
+$('region-picker').innerHTML=REGION_DEFS.map(r=>`<option value="${r.id}">${r.name}</option>`).join('');
+const previousProgress=loadProgress();
+startGame('Guardian');newRun();
+persistenceEnabled=true;
+if(previousProgress){
+ const btn=document.createElement('button');btn.type='button';btn.id='resume-last';btn.className='primary-btn';
+ btn.style.cssText='width:100%;margin-top:12px;padding:14px 16px;background:#173d46;color:#eafefa;border:1px solid #58b7aa;border-radius:12px;font-weight:750;min-height:48px';
+ btn.textContent=`Resume saved ${previousProgress.state.mandate} run · Week ${String(previousProgress.state.week).padStart(2,'0')} →`;
+ btn.addEventListener('click',()=>resumeProgress(previousProgress));$('modal-body').appendChild(btn);
+}
+
+</script>
+</body>
+</html>
